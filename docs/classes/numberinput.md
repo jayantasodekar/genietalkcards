@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [NumberInput](numberinput.md)
+[Genietalk Cards Javascript SDK](../README.md) › [NumberInput](numberinput.md)
 
 # Class: NumberInput
 

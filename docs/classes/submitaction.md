@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [SubmitAction](submitaction.md)
+[Genietalk Cards Javascript SDK](../README.md) › [SubmitAction](submitaction.md)
 
 # Class: SubmitAction
 

@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [IFontWeightDefinitions](ifontweightdefinitions.md)
+[Genietalk Cards Javascript SDK](../README.md) › [IFontWeightDefinitions](ifontweightdefinitions.md)
 
 # Interface: IFontWeightDefinitions
 

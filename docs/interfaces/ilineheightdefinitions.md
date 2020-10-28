@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ILineHeightDefinitions](ilineheightdefinitions.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ILineHeightDefinitions](ilineheightdefinitions.md)
 
 # Interface: ILineHeightDefinitions
 

@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [GlobalRegistry](globalregistry.md)
+[Genietalk Cards Javascript SDK](../README.md) › [GlobalRegistry](globalregistry.md)
 
 # Class: GlobalRegistry
 

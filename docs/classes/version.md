@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [Version](version.md)
+[Genietalk Cards Javascript SDK](../README.md) › [Version](version.md)
 
 # Class: Version
 

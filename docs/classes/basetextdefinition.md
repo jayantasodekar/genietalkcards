@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [BaseTextDefinition](basetextdefinition.md)
+[Genietalk Cards Javascript SDK](../README.md) › [BaseTextDefinition](basetextdefinition.md)
 
 # Class: BaseTextDefinition
 

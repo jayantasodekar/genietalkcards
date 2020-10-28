@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [BackgroundImage](backgroundimage.md)
+[Genietalk Cards Javascript SDK](../README.md) › [BackgroundImage](backgroundimage.md)
 
 # Class: BackgroundImage
 

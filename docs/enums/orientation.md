@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [Orientation](orientation.md)
+[Genietalk Cards Javascript SDK](../README.md) › [Orientation](orientation.md)
 
 # Enumeration: Orientation
 

@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [TextWeight](textweight.md)
+[Genietalk Cards Javascript SDK](../README.md) › [TextWeight](textweight.md)
 
 # Enumeration: TextWeight
 

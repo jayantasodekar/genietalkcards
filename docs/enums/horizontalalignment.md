@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [HorizontalAlignment](horizontalalignment.md)
+[Genietalk Cards Javascript SDK](../README.md) › [HorizontalAlignment](horizontalalignment.md)
 
 # Enumeration: HorizontalAlignment
 

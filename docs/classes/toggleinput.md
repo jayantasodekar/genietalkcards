@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ToggleInput](toggleinput.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ToggleInput](toggleinput.md)
 
 # Class: ToggleInput
 

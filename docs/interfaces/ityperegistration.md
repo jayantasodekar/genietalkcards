@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ITypeRegistration](ityperegistration.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ITypeRegistration](ityperegistration.md)
 
 # Interface: ITypeRegistration ‹**T**›
 

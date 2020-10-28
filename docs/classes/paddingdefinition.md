@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [PaddingDefinition](paddingdefinition.md)
+[Genietalk Cards Javascript SDK](../README.md) › [PaddingDefinition](paddingdefinition.md)
 
 # Class: PaddingDefinition
 

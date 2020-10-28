@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [FontTypeDefinition](fonttypedefinition.md)
+[Genietalk Cards Javascript SDK](../README.md) › [FontTypeDefinition](fonttypedefinition.md)
 
 # Class: FontTypeDefinition
 

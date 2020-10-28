@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ICardElement](icardelement.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ICardElement](icardelement.md)
 
 # Interface: ICardElement
 
@@ -6,7 +6,7 @@
 
 * **ICardElement**
 
-  ↳ [IAdaptiveCard](iadaptivecard.md)
+  ↳ [IGenietalkCard](igenietalkcard.md)
 
 ## Indexable
 

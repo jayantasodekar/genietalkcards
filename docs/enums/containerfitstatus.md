@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ContainerFitStatus](containerfitstatus.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ContainerFitStatus](containerfitstatus.md)
 
 # Enumeration: ContainerFitStatus
 

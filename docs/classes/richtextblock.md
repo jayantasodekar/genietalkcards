@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [RichTextBlock](richtextblock.md)
+[Genietalk Cards Javascript SDK](../README.md) › [RichTextBlock](richtextblock.md)
 
 # Class: RichTextBlock
 

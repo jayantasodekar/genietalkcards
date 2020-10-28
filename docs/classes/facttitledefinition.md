@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [FactTitleDefinition](facttitledefinition.md)
+[Genietalk Cards Javascript SDK](../README.md) › [FactTitleDefinition](facttitledefinition.md)
 
 # Class: FactTitleDefinition
 

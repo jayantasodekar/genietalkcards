@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ISeparationDefinition](iseparationdefinition.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ISeparationDefinition](iseparationdefinition.md)
 
 # Interface: ISeparationDefinition
 

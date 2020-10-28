@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [MediaSource](mediasource.md)
+[Genietalk Cards Javascript SDK](../README.md) › [MediaSource](mediasource.md)
 
 # Class: MediaSource
 

@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [EnumProperty](enumproperty.md)
+[Genietalk Cards Javascript SDK](../README.md) › [EnumProperty](enumproperty.md)
 
 # Class: EnumProperty ‹**TEnum**›
 

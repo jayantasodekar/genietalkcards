@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ShowCardAction](showcardaction.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ShowCardAction](showcardaction.md)
 
 # Class: ShowCardAction
 
@@ -117,7 +117,7 @@ ___
 
 ###  card
 
-• **card**: *[AdaptiveCard](adaptivecard.md)* = new InlineAdaptiveCard()
+• **card**: *[GenietalkCard](genietalkcard.md)* = new InlineGenietalkCard()
 
 ___
 

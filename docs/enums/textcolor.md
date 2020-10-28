@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [TextColor](textcolor.md)
+[Genietalk Cards Javascript SDK](../README.md) › [TextColor](textcolor.md)
 
 # Enumeration: TextColor
 

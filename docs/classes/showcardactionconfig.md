@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ShowCardActionConfig](showcardactionconfig.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ShowCardActionConfig](showcardactionconfig.md)
 
 # Class: ShowCardActionConfig
 

@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [TextInput](textinput.md)
+[Genietalk Cards Javascript SDK](../README.md) › [TextInput](textinput.md)
 
 # Class: TextInput
 

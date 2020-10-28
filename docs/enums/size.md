@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [Size](size.md)
+[Genietalk Cards Javascript SDK](../README.md) › [Size](size.md)
 
 # Enumeration: Size
 

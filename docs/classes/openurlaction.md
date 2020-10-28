@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [OpenUrlAction](openurlaction.md)
+[Genietalk Cards Javascript SDK](../README.md) › [OpenUrlAction](openurlaction.md)
 
 # Class: OpenUrlAction
 

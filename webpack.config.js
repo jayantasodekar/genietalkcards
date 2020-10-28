@@ -12,13 +12,13 @@ module.exports = (env, argv) => {
 	return {
 		mode: mode,
 		entry: {
-			"adaptivecards": "./src/adaptivecards.ts"
+			"genietalkcards": "./src/genietalkcards.ts"
 		},
 		output: {
 			path: path.resolve(__dirname, "./dist"),
 			filename: devMode ? "[name].js" : "[name].min.js",
 			libraryTarget: "umd",
-			library: "AdaptiveCards"
+			library: "GenietalkCards"
 		},
 		devtool: devMode ? "inline-source-map" : "source-map",
 		devServer: {
@@ -46,7 +46,7 @@ module.exports = (env, argv) => {
 		},
 		plugins: [
 			new HtmlWebpackPlugin({
-				title: "Adaptive Cards Example",
+				title: "Genietalk Cards Example",
 				template: "./example.html"
 			})
 		]

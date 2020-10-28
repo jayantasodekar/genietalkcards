@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [BaseTextBlock](basetextblock.md)
+[Genietalk Cards Javascript SDK](../README.md) › [BaseTextBlock](basetextblock.md)
 
 # Class: BaseTextBlock
 

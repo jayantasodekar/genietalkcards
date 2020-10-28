@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [SizeAndUnit](sizeandunit.md)
+[Genietalk Cards Javascript SDK](../README.md) › [SizeAndUnit](sizeandunit.md)
 
 # Class: SizeAndUnit
 

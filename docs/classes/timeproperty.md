@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [TimeProperty](timeproperty.md)
+[Genietalk Cards Javascript SDK](../README.md) › [TimeProperty](timeproperty.md)
 
 # Class: TimeProperty
 

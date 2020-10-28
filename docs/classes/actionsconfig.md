@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ActionsConfig](actionsconfig.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ActionsConfig](actionsconfig.md)
 
 # Class: ActionsConfig
 

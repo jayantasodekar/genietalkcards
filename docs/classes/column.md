@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [Column](column.md)
+[Genietalk Cards Javascript SDK](../README.md) › [Column](column.md)
 
 # Class: Column
 

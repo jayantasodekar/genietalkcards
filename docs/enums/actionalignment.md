@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ActionAlignment](actionalignment.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ActionAlignment](actionalignment.md)
 
 # Enumeration: ActionAlignment
 

@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [UUID](uuid.md)
+[Genietalk Cards Javascript SDK](../README.md) › [UUID](uuid.md)
 
 # Class: UUID
 

@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ActionSet](actionset.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ActionSet](actionset.md)
 
 # Class: ActionSet
 

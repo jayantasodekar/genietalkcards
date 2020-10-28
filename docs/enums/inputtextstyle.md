@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [InputTextStyle](inputtextstyle.md)
+[Genietalk Cards Javascript SDK](../README.md) › [InputTextStyle](inputtextstyle.md)
 
 # Enumeration: InputTextStyle
 

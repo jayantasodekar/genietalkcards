@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [HttpHeader](httpheader.md)
+[Genietalk Cards Javascript SDK](../README.md) › [HttpHeader](httpheader.md)
 
 # Class: HttpHeader
 

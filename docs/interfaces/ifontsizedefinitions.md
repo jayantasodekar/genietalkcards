@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [IFontSizeDefinitions](ifontsizedefinitions.md)
+[Genietalk Cards Javascript SDK](../README.md) › [IFontSizeDefinitions](ifontsizedefinitions.md)
 
 # Interface: IFontSizeDefinitions
 

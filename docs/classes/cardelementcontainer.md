@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [CardElementContainer](cardelementcontainer.md)
+[Genietalk Cards Javascript SDK](../README.md) › [CardElementContainer](cardelementcontainer.md)
 
 # Class: CardElementContainer
 

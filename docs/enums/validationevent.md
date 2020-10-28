@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ValidationEvent](validationevent.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ValidationEvent](validationevent.md)
 
 # Enumeration: ValidationEvent
 

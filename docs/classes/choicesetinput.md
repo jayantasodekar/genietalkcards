@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ChoiceSetInput](choicesetinput.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ChoiceSetInput](choicesetinput.md)
 
 # Class: ChoiceSetInput
 

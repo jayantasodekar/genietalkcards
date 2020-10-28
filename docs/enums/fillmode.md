@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [FillMode](fillmode.md)
+[Genietalk Cards Javascript SDK](../README.md) › [FillMode](fillmode.md)
 
 # Enumeration: FillMode
 

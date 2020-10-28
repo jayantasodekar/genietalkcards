@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ColorSetDefinition](colorsetdefinition.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ColorSetDefinition](colorsetdefinition.md)
 
 # Class: ColorSetDefinition
 

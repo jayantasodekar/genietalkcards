@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ShowCardActionMode](showcardactionmode.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ShowCardActionMode](showcardactionmode.md)
 
 # Enumeration: ShowCardActionMode
 

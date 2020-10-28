@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ActionProperty](actionproperty.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ActionProperty](actionproperty.md)
 
 # Class: ActionProperty
 

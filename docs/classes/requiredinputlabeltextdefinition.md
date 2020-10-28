@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [RequiredInputLabelTextDefinition](requiredinputlabeltextdefinition.md)
+[Genietalk Cards Javascript SDK](../README.md) › [RequiredInputLabelTextDefinition](requiredinputlabeltextdefinition.md)
 
 # Class: RequiredInputLabelTextDefinition
 

@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [HostConfig](hostconfig.md)
+[Genietalk Cards Javascript SDK](../README.md) › [HostConfig](hostconfig.md)
 
 # Class: HostConfig
 
@@ -15,7 +15,7 @@
 ### Properties
 
 * [actions](hostconfig.md#actions)
-* [adaptiveCard](hostconfig.md#adaptivecard)
+* [genietalkCard](hostconfig.md#genietalkcard)
 * [alwaysAllowBleed](hostconfig.md#alwaysallowbleed)
 * [choiceSetInputValueSeparator](hostconfig.md#choicesetinputvalueseparator)
 * [containerStyles](hostconfig.md#containerstyles)
@@ -71,9 +71,9 @@ Name | Type |
 
 ___
 
-###  adaptiveCard
+###  genietalkCard
 
-• **adaptiveCard**: *[AdaptiveCardConfig](adaptivecardconfig.md)* = new AdaptiveCardConfig()
+• **genietalkCard**: *[GenietalkCardConfig](genietalkcardconfig.md)* = new GenietalkCardConfig()
 
 ___
 

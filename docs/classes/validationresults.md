@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ValidationResults](validationresults.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ValidationResults](validationresults.md)
 
 # Class: ValidationResults
 

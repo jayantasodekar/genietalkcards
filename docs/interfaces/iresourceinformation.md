@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [IResourceInformation](iresourceinformation.md)
+[Genietalk Cards Javascript SDK](../README.md) › [IResourceInformation](iresourceinformation.md)
 
 # Interface: IResourceInformation
 

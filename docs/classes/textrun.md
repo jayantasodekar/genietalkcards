@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [TextRun](textrun.md)
+[Genietalk Cards Javascript SDK](../README.md) › [TextRun](textrun.md)
 
 # Class: TextRun
 

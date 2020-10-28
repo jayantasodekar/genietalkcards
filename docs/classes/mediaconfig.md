@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [MediaConfig](mediaconfig.md)
+[Genietalk Cards Javascript SDK](../README.md) › [MediaConfig](mediaconfig.md)
 
 # Class: MediaConfig
 

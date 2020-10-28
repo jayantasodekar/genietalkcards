@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [SpacingDefinition](spacingdefinition.md)
+[Genietalk Cards Javascript SDK](../README.md) › [SpacingDefinition](spacingdefinition.md)
 
 # Class: SpacingDefinition
 

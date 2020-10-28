@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [CardObject](cardobject.md)
+[Genietalk Cards Javascript SDK](../README.md) › [CardObject](cardobject.md)
 
 # Class: CardObject
 

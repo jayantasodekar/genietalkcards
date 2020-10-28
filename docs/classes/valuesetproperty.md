@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ValueSetProperty](valuesetproperty.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ValueSetProperty](valuesetproperty.md)
 
 # Class: ValueSetProperty
 

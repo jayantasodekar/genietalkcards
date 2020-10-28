@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ActionIconPlacement](actioniconplacement.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ActionIconPlacement](actioniconplacement.md)
 
 # Enumeration: ActionIconPlacement
 

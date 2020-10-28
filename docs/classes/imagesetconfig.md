@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ImageSetConfig](imagesetconfig.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ImageSetConfig](imagesetconfig.md)
 
 # Class: ImageSetConfig
 

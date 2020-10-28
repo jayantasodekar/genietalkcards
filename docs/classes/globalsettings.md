@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [GlobalSettings](globalsettings.md)
+[Genietalk Cards Javascript SDK](../README.md) › [GlobalSettings](globalsettings.md)
 
 # Class: GlobalSettings
 

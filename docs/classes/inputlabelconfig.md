@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [InputLabelConfig](inputlabelconfig.md)
+[Genietalk Cards Javascript SDK](../README.md) › [InputLabelConfig](inputlabelconfig.md)
 
 # Class: InputLabelConfig
 

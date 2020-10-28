@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ActionStyle](actionstyle.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ActionStyle](actionstyle.md)
 
 # Class: ActionStyle
 

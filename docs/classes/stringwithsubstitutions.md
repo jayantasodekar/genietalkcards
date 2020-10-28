@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [StringWithSubstitutions](stringwithsubstitutions.md)
+[Genietalk Cards Javascript SDK](../README.md) › [StringWithSubstitutions](stringwithsubstitutions.md)
 
 # Class: StringWithSubstitutions
 

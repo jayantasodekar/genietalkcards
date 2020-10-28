@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [SerializationContext](serializationcontext.md)
+[Genietalk Cards Javascript SDK](../README.md) › [SerializationContext](serializationcontext.md)
 
 # Class: SerializationContext
 

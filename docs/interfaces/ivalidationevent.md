@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [IValidationEvent](ivalidationevent.md)
+[Genietalk Cards Javascript SDK](../README.md) › [IValidationEvent](ivalidationevent.md)
 
 # Interface: IValidationEvent
 

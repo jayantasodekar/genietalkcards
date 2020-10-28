@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [FactSet](factset.md)
+[Genietalk Cards Javascript SDK](../README.md) › [FactSet](factset.md)
 
 # Class: FactSet
 

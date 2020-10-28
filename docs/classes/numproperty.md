@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [NumProperty](numproperty.md)
+[Genietalk Cards Javascript SDK](../README.md) › [NumProperty](numproperty.md)
 
 # Class: NumProperty
 

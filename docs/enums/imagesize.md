@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ImageSize](imagesize.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ImageSize](imagesize.md)
 
 # Enumeration: ImageSize
 

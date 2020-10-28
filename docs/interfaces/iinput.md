@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [IInput](iinput.md)
+[Genietalk Cards Javascript SDK](../README.md) › [IInput](iinput.md)
 
 # Interface: IInput
 

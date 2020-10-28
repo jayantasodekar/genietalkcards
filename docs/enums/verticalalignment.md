@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [VerticalAlignment](verticalalignment.md)
+[Genietalk Cards Javascript SDK](../README.md) › [VerticalAlignment](verticalalignment.md)
 
 # Enumeration: VerticalAlignment
 

@@ -1,6 +1,6 @@
-[Adaptive Cards Javascript SDK](README.md)
+[Genietalk Cards Javascript SDK](README.md)
 
-# Adaptive Cards Javascript SDK
+# Genietalk Cards Javascript SDK
 
 ## Index
 
@@ -34,8 +34,8 @@
 * [ActionSet](classes/actionset.md)
 * [ActionStyle](classes/actionstyle.md)
 * [ActionsConfig](classes/actionsconfig.md)
-* [AdaptiveCard](classes/adaptivecard.md)
-* [AdaptiveCardConfig](classes/adaptivecardconfig.md)
+* [GenietalkCard](classes/genietalkcard.md)
+* [GenietalkCardConfig](classes/genietalkcardconfig.md)
 * [BackgroundImage](classes/backgroundimage.md)
 * [BaseSerializationContext](classes/baseserializationcontext.md)
 * [BaseTextBlock](classes/basetextblock.md)
@@ -118,7 +118,7 @@
 
 ### Interfaces
 
-* [IAdaptiveCard](interfaces/iadaptivecard.md)
+* [IGenietalkCard](interfaces/igenietalkcard.md)
 * [ICardElement](interfaces/icardelement.md)
 * [IFontSizeDefinitions](interfaces/ifontsizedefinitions.md)
 * [IFontWeightDefinitions](interfaces/ifontweightdefinitions.md)
@@ -525,7 +525,7 @@ ___
             actionsOrientation: Enums.Orientation.Horizontal,
             actionAlignment: Enums.ActionAlignment.Left
         },
-        adaptiveCard: {
+        genietalkCard: {
             allowCustomStyle: false
         },
         imageSet: {

@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [IVersionedValue](iversionedvalue.md)
+[Genietalk Cards Javascript SDK](../README.md) › [IVersionedValue](iversionedvalue.md)
 
 # Interface: IVersionedValue ‹**TValue**›
 

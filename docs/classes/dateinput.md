@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [DateInput](dateinput.md)
+[Genietalk Cards Javascript SDK](../README.md) › [DateInput](dateinput.md)
 
 # Class: DateInput
 

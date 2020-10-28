@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ContainerStyle](containerstyle.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ContainerStyle](containerstyle.md)
 
 # Class: ContainerStyle
 

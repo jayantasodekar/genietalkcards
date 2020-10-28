@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [SerializableObjectProperty](serializableobjectproperty.md)
+[Genietalk Cards Javascript SDK](../README.md) › [SerializableObjectProperty](serializableobjectproperty.md)
 
 # Class: SerializableObjectProperty
 

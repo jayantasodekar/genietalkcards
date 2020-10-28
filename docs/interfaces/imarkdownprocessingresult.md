@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [IMarkdownProcessingResult](imarkdownprocessingresult.md)
+[Genietalk Cards Javascript SDK](../README.md) › [IMarkdownProcessingResult](imarkdownprocessingresult.md)
 
 # Interface: IMarkdownProcessingResult
 

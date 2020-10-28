@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ImageStyle](imagestyle.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ImageStyle](imagestyle.md)
 
 # Enumeration: ImageStyle
 

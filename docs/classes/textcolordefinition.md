@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [TextColorDefinition](textcolordefinition.md)
+[Genietalk Cards Javascript SDK](../README.md) › [TextColorDefinition](textcolordefinition.md)
 
 # Class: TextColorDefinition
 

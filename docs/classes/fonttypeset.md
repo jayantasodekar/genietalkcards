@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [FontTypeSet](fonttypeset.md)
+[Genietalk Cards Javascript SDK](../README.md) › [FontTypeSet](fonttypeset.md)
 
 # Class: FontTypeSet
 

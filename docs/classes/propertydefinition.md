@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [PropertyDefinition](propertydefinition.md)
+[Genietalk Cards Javascript SDK](../README.md) › [PropertyDefinition](propertydefinition.md)
 
 # Class: PropertyDefinition
 

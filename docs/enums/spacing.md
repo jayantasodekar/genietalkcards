@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [Spacing](spacing.md)
+[Genietalk Cards Javascript SDK](../README.md) › [Spacing](spacing.md)
 
 # Enumeration: Spacing
 

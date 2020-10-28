@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [PixelSizeProperty](pixelsizeproperty.md)
+[Genietalk Cards Javascript SDK](../README.md) › [PixelSizeProperty](pixelsizeproperty.md)
 
 # Class: PixelSizeProperty
 

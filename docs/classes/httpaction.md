@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [HttpAction](httpaction.md)
+[Genietalk Cards Javascript SDK](../README.md) › [HttpAction](httpaction.md)
 
 # Class: HttpAction
 

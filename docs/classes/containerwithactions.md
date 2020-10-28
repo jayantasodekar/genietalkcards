@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ContainerWithActions](containerwithactions.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ContainerWithActions](containerwithactions.md)
 
 # Class: ContainerWithActions
 
@@ -8,7 +8,7 @@
 
   ↳ **ContainerWithActions**
 
-  ↳ [AdaptiveCard](adaptivecard.md)
+  ↳ [GenietalkCard](genietalkcard.md)
 
 ## Index
 

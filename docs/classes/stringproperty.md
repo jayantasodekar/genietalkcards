@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [StringProperty](stringproperty.md)
+[Genietalk Cards Javascript SDK](../README.md) › [StringProperty](stringproperty.md)
 
 # Class: StringProperty
 

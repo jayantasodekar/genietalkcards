@@ -1,6 +1,16 @@
 {
-	"extends": "./tsconfig.json",
+	
 	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es5",
+		"lib": [
+			"dom",
+			"es2015"
+		],
+		"moduleResolution": "node",
+		"jsx": "react",
+		"sourceMap": true,
+		"declaration": true,
 		"inlineSourceMap": false,
 		"outDir": "../output/dist",
 		"removeComments": true

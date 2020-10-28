@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ColumnSet](columnset.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ColumnSet](columnset.md)
 
 # Class: ColumnSet
 

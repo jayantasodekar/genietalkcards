@@ -1,5 +1,5 @@
 {
-	"name": "Adaptive Cards Javascript SDK",
+	"name": "Genietalk Cards Javascript SDK",
 	"inputFiles": "./src",
 	"mode": "library",
 	"out": "docs",

@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ValidationPhase](validationphase.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ValidationPhase](validationphase.md)
 
 # Enumeration: ValidationPhase
 

@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>Adaptive Cards Example</title>
+	<title>Genietalk Cards Example</title>
 
 	<script src="https://unpkg.com/markdown-it@8.4.0/dist/markdown-it.js"></script>
 
@@ -19,54 +19,54 @@
 
 			// author a card
 			// in practice you'll probably get this from a service
-			// see http://adaptivecards.io/samples/ for inspiration
+			// see http://genietalkcards.io/samples/ for inspiration
 			var card = {
-				"type": "AdaptiveCard",
+				"type": "GenietalkCard",
 				"version": "1.0",
 				"body": [{
 						"type": "Image",
-						"url": "https://adaptivecards.io/content/adaptive-card-50.png"
+						"url": "https://genietalkcards.io/content/genietalk-card-50.png"
 					},
 					{
 						"type": "TextBlock",
-						"text": "Hello **Adaptive Cards!**"
+						"text": "Hello **Genietalk Cards!**"
 					}
 				],
 				"actions": [{
 						"type": "Action.OpenUrl",
 						"title": "Learn more",
-						"url": "https://adaptivecards.io"
+						"url": "https://genietalkcards.io"
 					},
 					{
 						"type": "Action.OpenUrl",
 						"title": "GitHub",
-						"url": "https://github.com/Microsoft/AdaptiveCards"
+						"url": "https://github.com/Microsoft/GenietalkCards"
 					}
 				]
 			};
 
-			// Create an AdaptiveCard instance
-			var adaptiveCard = new AdaptiveCards.AdaptiveCard();
+			// Create an GenietalkCard instance
+			var genietalkCard = new GenietalkCards.GenietalkCard();
 
 			// Set its hostConfig property unless you want to use the default Host Config
 			// Host Config defines the style and behavior of a card
-			adaptiveCard.hostConfig = new AdaptiveCards.HostConfig({
+			genietalkCard.hostConfig = new GenietalkCards.HostConfig({
 				fontFamily: "Segoe UI, Helvetica Neue, sans-serif"
 				// More host config options
-				// You can find example configs here: https://github.com/microsoft/AdaptiveCards/tree/main/samples/HostConfig
+				// You can find example configs here: https://github.com/microsoft/GenietalkCards/tree/main/samples/HostConfig
 			});
 
-			// Set the adaptive card's event handlers. onExecuteAction is invoked
+			// Set the genietalk card's event handlers. onExecuteAction is invoked
 			// whenever an action is clicked in the card
-			adaptiveCard.onExecuteAction = function (action) {
+			genietalkCard.onExecuteAction = function (action) {
 				alert("Ow!");
 			}
 
 			// Parse the card payload
-			adaptiveCard.parse(card);
+			genietalkCard.parse(card);
 
 			// Render the card to an HTML element:
-			var renderedCard = adaptiveCard.render();
+			var renderedCard = genietalkCard.render();
 
 			// And finally insert it in the page:
 			document.getElementById('exampleDiv').appendChild(renderedCard);
@@ -76,9 +76,9 @@
 </head>
 
 <body onload="renderCard()">
-	<h1>Adaptive Cards Example</h1>
+	<h1>Genietalk Cards Example</h1>
 
-	<p>This example requires a build of the Adaptive Cards library.</p>
+	<p>This example requires a build of the Genietalk Cards library.</p>
 
 	<h3>To run:</h3>
 	<code>

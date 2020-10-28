@@ -1,6 +1,15 @@
 {
-	"extends": "../tsconfig.json",
 	"compilerOptions": {
+		"module": "commonjs",
+		"target": "es5",
+		"lib": [
+			"dom",
+			"es2015"
+		],
+		"moduleResolution": "node",
+		"jsx": "react",
+		"sourceMap": true,
+		"declaration": true,
 		"outDir": "./lib",
 		"noImplicitAny": true,
 		"strictNullChecks": true,
@@ -9,5 +18,9 @@
 		"noFallthroughCasesInSwitch": true,
 		"experimentalDecorators": true
 	},
-	"files": ["src/genietalkcards.ts"]
+	"files": ["src/genietalkcards.ts"],
+	"exclude": [
+		"node_modules",
+		"**/*.spec.ts"
+	]
 }

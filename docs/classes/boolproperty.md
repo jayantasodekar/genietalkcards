@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [BoolProperty](boolproperty.md)
+[Genietalk Cards Javascript SDK](../README.md) › [BoolProperty](boolproperty.md)
 
 # Class: BoolProperty
 

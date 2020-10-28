@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [TextSize](textsize.md)
+[Genietalk Cards Javascript SDK](../README.md) › [TextSize](textsize.md)
 
 # Enumeration: TextSize
 

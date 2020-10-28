@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [Image](image.md)
+[Genietalk Cards Javascript SDK](../README.md) › [Image](image.md)
 
 # Class: Image
 

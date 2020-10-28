@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [Choice](choice.md)
+[Genietalk Cards Javascript SDK](../README.md) › [Choice](choice.md)
 
 # Class: Choice
 

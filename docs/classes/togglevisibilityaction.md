@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [ToggleVisibilityAction](togglevisibilityaction.md)
+[Genietalk Cards Javascript SDK](../README.md) › [ToggleVisibilityAction](togglevisibilityaction.md)
 
 # Class: ToggleVisibilityAction
 

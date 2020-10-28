@@ -1,4 +1,4 @@
-[Adaptive Cards Javascript SDK](../README.md) › [Container](container.md)
+[Genietalk Cards Javascript SDK](../README.md) › [Container](container.md)
 
 # Class: Container
 
