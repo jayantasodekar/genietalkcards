@@ -53,7 +53,7 @@ export class TextColorDefinition extends ColorDefinition {
     }
 }
 
-export class AdaptiveCardConfig {
+export class GenietalkCardConfig {
     allowCustomStyle: boolean = false;
 
     constructor(obj?: any) {
@@ -582,7 +582,7 @@ export class HostConfig {
     readonly containerStyles: ContainerStyleSet = new ContainerStyleSet();
     readonly inputs: InputConfig = new InputConfig();
     readonly actions: ActionsConfig = new ActionsConfig();
-    readonly adaptiveCard: AdaptiveCardConfig = new AdaptiveCardConfig();
+    readonly genietalkCard: GenietalkCardConfig = new GenietalkCardConfig();
     readonly imageSet: ImageSetConfig = new ImageSetConfig();
     readonly media: MediaConfig = new MediaConfig();
     readonly factSet: FactSetConfig = new FactSetConfig();
@@ -639,7 +639,7 @@ export class HostConfig {
 
             this.inputs = new InputConfig(obj.inputs || this.inputs);
             this.actions = new ActionsConfig(obj.actions || this.actions);
-            this.adaptiveCard = new AdaptiveCardConfig(obj.adaptiveCard || this.adaptiveCard);
+            this.genietalkCard = new GenietalkCardConfig(obj.genietalkCard || this.genietalkCard);
             this.imageSet = new ImageSetConfig(obj["imageSet"]);
             this.factSet = new FactSetConfig(obj["factSet"])
         }
@@ -1000,7 +1000,7 @@ export const defaultHostConfig: HostConfig = new HostConfig(
             actionsOrientation: Enums.Orientation.Horizontal,
             actionAlignment: Enums.ActionAlignment.Left
         },
-        adaptiveCard: {
+        genietalkCard: {
             allowCustomStyle: false
         },
         imageSet: {

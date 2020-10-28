@@ -459,7 +459,7 @@ export abstract class CardElement extends CardObject {
     isDesignMode(): boolean {
         let rootElement = this.getRootElement();
 
-        return rootElement instanceof AdaptiveCard && rootElement.designMode;
+        return rootElement instanceof GenietalkCard && rootElement.designMode;
     }
 
     isFirstElement(element: CardElement): boolean {
@@ -934,7 +934,7 @@ export class TextBlock extends BaseTextBlock {
                         formattedText = formattedText.replace(/<mark>/g, "===").replace(/<\/mark>/g, "/==/");
                     }
 
-                    let markdownProcessingResult = AdaptiveCard.applyMarkdown(formattedText);
+                    let markdownProcessingResult = GenietalkCard.applyMarkdown(formattedText);
 
                     if (markdownProcessingResult.didProcess && markdownProcessingResult.outputHtml) {
                         this._processedText = markdownProcessingResult.outputHtml;
@@ -1742,7 +1742,7 @@ export class Image extends CardElement {
             }
             imageElement.onerror = (e: Event) => {
                 if (this.renderedElement) {
-                    let card = this.getRootElement() as AdaptiveCard;
+                    let card = this.getRootElement() as GenietalkCard;
 
                     this.renderedElement.innerHTML = "";
 
@@ -4385,7 +4385,7 @@ export class ShowCardAction extends Action {
         }
     }
 
-    readonly card: AdaptiveCard = new InlineAdaptiveCard();
+    readonly card: GenietalkCard = new InlineGenietalkCard();
 
     getJsonTypeName(): string {
         return ShowCardAction.JsonTypeName;
@@ -4490,7 +4490,7 @@ class ActionCollection {
     }
 
     private showActionCard(action: ShowCardAction, suppressStyle: boolean = false, raiseEvent: boolean = true) {
-        (<InlineAdaptiveCard>action.card).suppressStyle = suppressStyle;
+        (<InlineGenietalkCard>action.card).suppressStyle = suppressStyle;
 
         // Always re-render a ShowCard action in design mode; reuse already rendered ShowCard (if available) otherwise
         let renderedCard = action.card.renderedElement && !this._owner.isDesignMode() ? action.card.renderedElement : action.card.render();
@@ -6116,8 +6116,8 @@ export class ColumnSet extends StylableCardElementContainer {
 }
 
 function raiseImageLoadedEvent(image: Image) {
-    let card = image.getRootElement() as AdaptiveCard;
-    let onImageLoadedHandler = (card && card.onImageLoaded) ? card.onImageLoaded : AdaptiveCard.onImageLoaded;
+    let card = image.getRootElement() as GenietalkCard;
+    let onImageLoadedHandler = (card && card.onImageLoaded) ? card.onImageLoaded : GenietalkCard.onImageLoaded;
 
     if (onImageLoadedHandler) {
         onImageLoadedHandler(image);
@@ -6125,15 +6125,15 @@ function raiseImageLoadedEvent(image: Image) {
 }
 
 function raiseAnchorClickedEvent(element: CardElement, anchor: HTMLAnchorElement): boolean {
-    let card = element.getRootElement() as AdaptiveCard;
-    let onAnchorClickedHandler = (card && card.onAnchorClicked) ? card.onAnchorClicked : AdaptiveCard.onAnchorClicked;
+    let card = element.getRootElement() as GenietalkCard;
+    let onAnchorClickedHandler = (card && card.onAnchorClicked) ? card.onAnchorClicked : GenietalkCard.onAnchorClicked;
 
     return onAnchorClickedHandler !== undefined ? onAnchorClickedHandler(element, anchor) : false;
 }
 
 function raiseExecuteActionEvent(action: Action) {
-    let card = action.parent ? action.parent.getRootElement() as AdaptiveCard : undefined;
-    let onExecuteActionHandler = (card && card.onExecuteAction) ? card.onExecuteAction : AdaptiveCard.onExecuteAction;
+    let card = action.parent ? action.parent.getRootElement() as GenietalkCard : undefined;
+    let onExecuteActionHandler = (card && card.onExecuteAction) ? card.onExecuteAction : GenietalkCard.onExecuteAction;
 
     if (action.prepareForExecution() && onExecuteActionHandler) {
         onExecuteActionHandler(action);
@@ -6141,8 +6141,8 @@ function raiseExecuteActionEvent(action: Action) {
 }
 
 function raiseInlineCardExpandedEvent(action: ShowCardAction, isExpanded: boolean) {
-    let card = action.parent ? action.parent.getRootElement() as AdaptiveCard : undefined;
-    let onInlineCardExpandedHandler = (card && card.onInlineCardExpanded) ? card.onInlineCardExpanded : AdaptiveCard.onInlineCardExpanded;
+    let card = action.parent ? action.parent.getRootElement() as GenietalkCard : undefined;
+    let onInlineCardExpandedHandler = (card && card.onInlineCardExpanded) ? card.onInlineCardExpanded : GenietalkCard.onInlineCardExpanded;
 
     if (onInlineCardExpandedHandler) {
         onInlineCardExpandedHandler(action, isExpanded);
@@ -6150,8 +6150,8 @@ function raiseInlineCardExpandedEvent(action: ShowCardAction, isExpanded: boolea
 }
 
 function raiseInputValueChangedEvent(input: Input) {
-    let card = input.getRootElement() as AdaptiveCard;
-    let onInputValueChangedHandler = (card && card.onInputValueChanged) ? card.onInputValueChanged : AdaptiveCard.onInputValueChanged;
+    let card = input.getRootElement() as GenietalkCard;
+    let onInputValueChangedHandler = (card && card.onInputValueChanged) ? card.onInputValueChanged : GenietalkCard.onInputValueChanged;
 
     if (onInputValueChangedHandler) {
         onInputValueChangedHandler(input);
@@ -6165,8 +6165,8 @@ function raiseElementVisibilityChangedEvent(element: CardElement, shouldUpdateLa
         rootElement.updateLayout();
     }
 
-    let card = rootElement as AdaptiveCard;
-    let onElementVisibilityChangedHandler = (card && card.onElementVisibilityChanged) ? card.onElementVisibilityChanged : AdaptiveCard.onElementVisibilityChanged;
+    let card = rootElement as GenietalkCard;
+    let onElementVisibilityChangedHandler = (card && card.onElementVisibilityChanged) ? card.onElementVisibilityChanged : GenietalkCard.onElementVisibilityChanged;
 
     if (onElementVisibilityChangedHandler !== undefined) {
         onElementVisibilityChangedHandler(element);
@@ -6324,8 +6324,8 @@ export interface IMarkdownProcessingResult {
 }
 
 // @dynamic
-export class AdaptiveCard extends ContainerWithActions {
-    static readonly schemaUrl = "http://adaptivecards.io/schemas/adaptive-card.json";
+export class GenietalkCard extends ContainerWithActions {
+    static readonly schemaUrl = "http://genietalkcards.io/schemas/genietalk-card.json";
 
     //#region Schema
 
@@ -6333,10 +6333,10 @@ export class AdaptiveCard extends ContainerWithActions {
         Versions.v1_0,
         "$schema",
         (sender: SerializableObject, property: PropertyDefinition, source: PropertyBag, context: BaseSerializationContext) => {
-            return AdaptiveCard.schemaUrl;
+            return GenietalkCard.schemaUrl;
         },
         (sender: SerializableObject, property: PropertyDefinition, target: PropertyBag, value: Versions | undefined, context: BaseSerializationContext) => {
-            context.serializeValue(target, property.name, AdaptiveCard.schemaUrl);
+            context.serializeValue(target, property.name, GenietalkCard.schemaUrl);
         });
 
     static readonly versionProperty = new CustomProperty<Version | undefined>(
@@ -6365,13 +6365,13 @@ export class AdaptiveCard extends ContainerWithActions {
     static readonly fallbackTextProperty = new StringProperty(Versions.v1_0, "fallbackText");
     static readonly speakProperty = new StringProperty(Versions.v1_0, "speak");
 
-    @property(AdaptiveCard.versionProperty)
+    @property(GenietalkCard.versionProperty)
     version: Version;
 
-    @property(AdaptiveCard.fallbackTextProperty)
+    @property(GenietalkCard.fallbackTextProperty)
     fallbackText?: string;
 
-    @property(AdaptiveCard.speakProperty)
+    @property(GenietalkCard.speakProperty)
     speak?: string;
 
     //#endregion
@@ -6397,8 +6397,8 @@ export class AdaptiveCard extends ContainerWithActions {
             didProcess: false
         };
 
-        if (AdaptiveCard.onProcessMarkdown) {
-            AdaptiveCard.onProcessMarkdown(text, result);
+        if (GenietalkCard.onProcessMarkdown) {
+            GenietalkCard.onProcessMarkdown(text, result);
         }
         else if ((<any>window).markdownit) {
             // Check for markdownit
@@ -6413,7 +6413,7 @@ export class AdaptiveCard extends ContainerWithActions {
         return result;
     }
 
-    private _fallbackCard?: AdaptiveCard;
+    private _fallbackCard?: GenietalkCard;
 
     private isVersionSupported(): boolean {
         if (this.bypassVersionCheck) {
@@ -6444,7 +6444,7 @@ export class AdaptiveCard extends ContainerWithActions {
         let fallbackElement = context.parseElement(undefined, source["fallback"], !this.isDesignMode());
 
         if (fallbackElement) {
-            this._fallbackCard = new AdaptiveCard();
+            this._fallbackCard = new GenietalkCard();
             this._fallbackCard.addItem(fallbackElement);
         }
 
@@ -6452,7 +6452,7 @@ export class AdaptiveCard extends ContainerWithActions {
     }
 
     protected internalToJSON(target: PropertyBag, context: SerializationContext) {
-        this.setValue(AdaptiveCard.versionProperty, context.targetVersion);
+        this.setValue(GenietalkCard.versionProperty, context.targetVersion);
 
         super.internalToJSON(target, context);
     }
@@ -6495,7 +6495,7 @@ export class AdaptiveCard extends ContainerWithActions {
     }
 
     protected get allowCustomStyle() {
-        return this.hostConfig.adaptiveCard && this.hostConfig.adaptiveCard.allowCustomStyle;
+        return this.hostConfig.genietalkCard && this.hostConfig.genietalkCard.allowCustomStyle;
     }
 
     protected get hasBackground(): boolean {
@@ -6512,13 +6512,13 @@ export class AdaptiveCard extends ContainerWithActions {
     designMode: boolean = false;
 
     getJsonTypeName(): string {
-        return "AdaptiveCard";
+        return "GenietalkCard";
     }
 
     internalValidateProperties(context: ValidationResults) {
         super.internalValidateProperties(context);
 
-        if (this.getValue(CardElement.typeNameProperty) !== "AdaptiveCard") {
+        if (this.getValue(CardElement.typeNameProperty) !== "GenietalkCard") {
             context.addFailure(
                 this,
                 Enums.ValidationEvent.MissingCardType,
@@ -6551,7 +6551,7 @@ export class AdaptiveCard extends ContainerWithActions {
             renderedCard = super.render();
 
             if (renderedCard) {
-                renderedCard.classList.add(this.hostConfig.makeCssClassName("ac-adaptiveCard"));
+                renderedCard.classList.add(this.hostConfig.makeCssClassName("ac-genietalkCard"));
 
                 // Having a tabIndex on the root container for a card can mess up accessibility in some scenarios.
                 // However, we've shipped this behavior before, and so can't just turn it off in a point release. For
@@ -6596,19 +6596,19 @@ export class AdaptiveCard extends ContainerWithActions {
     }
 }
 
-class InlineAdaptiveCard extends AdaptiveCard {
+class InlineGenietalkCard extends GenietalkCard {
     //#region Schema
 
     protected getSchemaKey(): string {
-        return "InlineAdaptiveCard";
+        return "InlineGenietalkCard";
     }
 
     protected populateSchema(schema: SerializableObjectSchema) {
         super.populateSchema(schema);
 
         schema.remove(
-            AdaptiveCard.$schemaProperty,
-            AdaptiveCard.versionProperty);
+            GenietalkCard.$schemaProperty,
+            GenietalkCard.versionProperty);
     }
 
     //#endregion

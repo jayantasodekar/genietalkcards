@@ -27,12 +27,12 @@ export interface IOpenUrlAction extends IAction {
 
 export interface IShowCardAction extends IAction {
     type: "Action.ShowCard";
-    card: IAdaptiveCard;
+    card: IGenietalkCard;
 }
 
 export interface ISubmitQueryAction extends IAction {
     type: "Action.SubmitQuery";
-    card: IAdaptiveCard;
+    card: IGenietalkCard;
 }
 export interface ICardElement {
     id?: string;
@@ -166,7 +166,7 @@ export interface IVersion {
     minor: number;
 }
 
-export interface IAdaptiveCard extends ICardElement {
+export interface IGenietalkCard extends ICardElement {
     type: "GenietalkCard";
     version?: IVersion | string;
     backgroundImage?: IBackgroundImage | string;

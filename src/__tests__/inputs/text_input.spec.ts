@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
-import { AdaptiveCard, TextInput, SerializationContext } from "../../card-elements";
+import { GenietalkCard, TextInput, SerializationContext } from "../../card-elements";
 import { Versions } from "../../serialization";
 
 test('TextInput should be instantiated', ()=>{
@@ -10,8 +10,8 @@ test('TextInput should be instantiated', ()=>{
 
 test('TextInput should be able to roundtrip', ()=>{
     const sample_card = {
-        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-        "type":"AdaptiveCard",
+        "$schema": "http://genietalkcards.io/schemas/genietalk-card.json",
+        "type":"GenietalkCard",
         "body":[
             {
                 "type":"Input.Text",
@@ -32,7 +32,7 @@ test('TextInput should be able to roundtrip', ()=>{
             ],
         "version":"1.0"
     };
-    let ac : AdaptiveCard = new AdaptiveCard();
+    let ac : GenietalkCard = new GenietalkCard();
     ac.parse(sample_card);
     let json = ac.toJSON(new SerializationContext(Versions.v1_0));
     expect(sample_card).toEqual(json);

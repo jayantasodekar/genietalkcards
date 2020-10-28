@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
-import {AdaptiveCard,TextBlock} from "../../card-elements";
+import {GenietalkCard,TextBlock} from "../../card-elements";
 
 test('TextBlock should be instantiated', ()=>{
     const textBlock = new TextBlock();
@@ -9,8 +9,8 @@ test('TextBlock should be instantiated', ()=>{
 
 const emoji_message = "Mix 🗣 emoji inside 🙌 text";
 const simple_test_card = {
-    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-    "type": "AdaptiveCard",
+    "$schema": "http://genietalkcards.io/schemas/genietalk-card.json",
+    "type": "GenietalkCard",
     "version": "1.0",
     "body": [{
         "type": "TextBlock",
@@ -20,7 +20,7 @@ const simple_test_card = {
 
 // TODO: confirm this test working as expected
 // test('TextBlock should allow for Unicode chars including Emoji', ()=>{
-//     const ac = new AdaptiveCard();
+//     const ac = new GenietalkCard();
 //     ac.parse(simple_test_card);
 //     const result = ac.render();
 //     const text = result.textContent.trim();

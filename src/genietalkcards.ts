@@ -9,4 +9,4 @@ export * from "./host-config";
 export * from "./shared";
 export * from "./utils";
 export * from "./strings";
-export { IAdaptiveCard, ICardElement } from "./schema";
+export { IGenietalkCard, ICardElement } from "./schema";
