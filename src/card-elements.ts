@@ -6197,6 +6197,135 @@ export class ColumnSet extends StylableCardElementContainer {
         this._selectAction = value;
     }
 }
+export class Carousel extends Container {
+    //#region Schema
+
+    static readonly widthProperty = new CustomProperty<ColumnWidth>(
+        Versions.v1_0,
+        "width",
+        (sender: SerializableObject, property: PropertyDefinition, source: PropertyBag, context: BaseSerializationContext) => {
+            let result: ColumnWidth = property.defaultValue;
+            let value = source[property.name];
+            let invalidWidth = false;
+
+            if (typeof value === "number" && !isNaN(value)) {
+                result = new SizeAndUnit(value, Enums.SizeUnit.Weight);
+            }
+            else if (value === "auto" || value === "stretch") {
+                result = value;
+            }
+            else if (typeof value === "string") {
+                try {
+                    result = SizeAndUnit.parse(value);
+
+                    if (result.unit === Enums.SizeUnit.Pixel && property.targetVersion.compareTo(context.targetVersion) > 0) {
+                        invalidWidth = true;
+                    }
+                }
+                catch (e) {
+                    invalidWidth = true;
+                }
+            }
+            else {
+                invalidWidth = true;
+            }
+
+            if (invalidWidth) {
+                context.logParseEvent(
+                    sender,
+                    Enums.ValidationEvent.InvalidPropertyValue,
+                    Strings.errors.invalidColumnWidth(value));
+
+                result = "auto";
+            }
+
+            return result;
+        },
+        (sender: SerializableObject, property: PropertyDefinition, target: PropertyBag, value: ColumnWidth, context: BaseSerializationContext) => {
+            if (value instanceof SizeAndUnit) {
+                if (value.unit === Enums.SizeUnit.Pixel) {
+                    context.serializeValue(target, "width", value.physicalSize + "px");
+                }
+                else {
+                    context.serializeNumber(target, "width", value.physicalSize);
+                }
+            }
+            else {
+                context.serializeValue(target, "width", value);
+            }
+        },
+        "stretch");
+
+    @property(Column.widthProperty)
+    width: ColumnWidth = "stretch";
+
+    //#endregion
+
+    private _computedWeight: number = 0;
+
+    protected adjustRenderedElementSize(renderedElement: HTMLElement) {
+        const minDesignTimeColumnHeight = 20;
+
+        if (this.isDesignMode()) {
+            renderedElement.style.minWidth = "20px";
+            renderedElement.style.minHeight = (!this.minPixelHeight ? minDesignTimeColumnHeight : Math.max(this.minPixelHeight, minDesignTimeColumnHeight)) + "px";
+        }
+        else {
+            renderedElement.style.minWidth = "0";
+
+            if (this.minPixelHeight) {
+                renderedElement.style.minHeight = this.minPixelHeight + "px";
+            }
+        }
+
+        if (this.width === "auto") {
+            renderedElement.style.flex = "0 1 auto";
+        }
+        else if (this.width === "stretch") {
+            renderedElement.style.flex = "1 1 50px";
+        }
+        else if (this.width instanceof SizeAndUnit) {
+            if (this.width.unit == Enums.SizeUnit.Pixel) {
+                renderedElement.style.flex = "0 0 auto";
+                renderedElement.style.width = this.width.physicalSize + "px";
+            }
+            else {
+                renderedElement.style.flex = "1 1 " + (this._computedWeight > 0 ? this._computedWeight : this.width.physicalSize) + "%";
+            }
+        }
+    }
+
+    protected shouldSerialize(context: SerializationContext): boolean {
+        return true;
+    }
+
+    protected get separatorOrientation(): Enums.Orientation {
+        return Enums.Orientation.Vertical;
+    }
+
+    constructor(width: ColumnWidth = "stretch") {
+        super();
+
+        this.width = width;
+    }
+
+    getJsonTypeName(): string {
+        return "Column";
+    }
+
+    get hasVisibleSeparator(): boolean {
+        if (this.parent && this.parent instanceof ColumnSet) {
+            return this.separatorElement !== undefined && !this.parent.isLeftMostElement(this);
+        }
+        else {
+            return false;
+        }
+    }
+
+    get isStandalone(): boolean {
+        return false;
+    }
+}
 
 function raiseImageLoadedEvent(image: Image) {
     let card = image.getRootElement() as GenietalkCard;
@@ -6737,6 +6866,7 @@ export class GlobalRegistry {
 
         registry.register("Container", Container);
         registry.register("TextBlock", TextBlock);
+        registry.register("Carousel", Carousel);
         registry.register("RichTextBlock", RichTextBlock, Versions.v1_2);
         registry.register("TextRun", TextRun, Versions.v1_2);
         registry.register("Image", Image);
