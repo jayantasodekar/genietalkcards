@@ -7,6 +7,7 @@ export declare class Strings {
         invalidPropertyValue: (value: any, propertyName: string) => string;
         showCardMustHaveCard: () => string;
         invalidColumnWidth: (invalidWidth: string) => string;
+        invalidCarouselItemWidth: (invalidWidth: string) => string;
         invalidCardVersion: (defaultingToVersion: string) => string;
         invalidVersionString: (versionString: string) => string;
         propertyValueNotSupported: (value: any, propertyName: string, supportedInVersion: string, versionUsed: string) => string;
@@ -22,6 +23,7 @@ export declare class Strings {
         actionHttpHeadersMustHaveNameAndValue: () => string;
         tooManyActions: (maximumActions: number) => string;
         columnAlreadyBelongsToAnotherSet: () => string;
+        carouselItemAlreadyBelongsToAnotherSet: () => string;
         invalidCardType: () => string;
         unsupportedCardVersion: (version: string, maxSupportedVersion: string) => string;
         duplicateId: (id: string) => string;
@@ -33,6 +35,7 @@ export declare class Strings {
     };
     static readonly hints: {
         dontUseWeightedAndStrecthedColumnsInSameSet: () => string;
+        dontUseWeightedAndStrecthedCarouselItemsInSameSet: () => string;
     };
     static readonly defaults: {
         inlineActionTitle: () => string;

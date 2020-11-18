@@ -5880,6 +5880,137 @@ export class Column extends Container {
         return false;
     }
 }
+export type CarouselItemWidth = SizeAndUnit | "auto" | "stretch";
+
+export class CarouselItem extends Container {
+    //#region Schema
+
+    static readonly widthProperty = new CustomProperty<CarouselItemWidth>(
+        Versions.v1_0,
+        "width",
+        (sender: SerializableObject, property: PropertyDefinition, source: PropertyBag, context: BaseSerializationContext) => {
+            let result: CarouselItemWidth = property.defaultValue;
+            let value = source[property.name];
+            let invalidWidth = false;
+
+            if (typeof value === "number" && !isNaN(value)) {
+                result = new SizeAndUnit(value, Enums.SizeUnit.Weight);
+            }
+            else if (value === "auto" || value === "stretch") {
+                result = value;
+            }
+            else if (typeof value === "string") {
+                try {
+                    result = SizeAndUnit.parse(value);
+
+                    if (result.unit === Enums.SizeUnit.Pixel && property.targetVersion.compareTo(context.targetVersion) > 0) {
+                        invalidWidth = true;
+                    }
+                }
+                catch (e) {
+                    invalidWidth = true;
+                }
+            }
+            else {
+                invalidWidth = true;
+            }
+
+            if (invalidWidth) {
+                context.logParseEvent(
+                    sender,
+                    Enums.ValidationEvent.InvalidPropertyValue,
+                    Strings.errors.invalidCarouselItemWidth(value));
+
+                result = "auto";
+            }
+
+            return result;
+        },
+        (sender: SerializableObject, property: PropertyDefinition, target: PropertyBag, value: CarouselItemWidth, context: BaseSerializationContext) => {
+            if (value instanceof SizeAndUnit) {
+                if (value.unit === Enums.SizeUnit.Pixel) {
+                    context.serializeValue(target, "width", value.physicalSize + "px");
+                }
+                else {
+                    context.serializeNumber(target, "width", value.physicalSize);
+                }
+            }
+            else {
+                context.serializeValue(target, "width", value);
+            }
+        },
+        "stretch");
+
+    @property(Column.widthProperty)
+    width: CarouselItemWidth = "stretch";
+
+    //#endregion
+
+    private _computedWeight: number = 0;
+
+    protected adjustRenderedElementSize(renderedElement: HTMLElement) {
+        const minDesignTimeColumnHeight = 20;
+      
+        if (this.isDesignMode()) {
+            renderedElement.style.minWidth = "20px";
+            renderedElement.style.minHeight = (!this.minPixelHeight ? minDesignTimeColumnHeight : Math.max(this.minPixelHeight, minDesignTimeColumnHeight)) + "px";
+        }
+        else {
+            renderedElement.style.minWidth = "100%";
+
+            if (this.minPixelHeight) {
+                renderedElement.style.minHeight = this.minPixelHeight + "px";
+            }
+        }
+
+        if (this.width === "auto") {
+            renderedElement.style.flex = "0 1 auto";
+        }
+        else if (this.width === "stretch") {
+            renderedElement.style.flex = "1 1 50px";
+        }
+        else if (this.width instanceof SizeAndUnit) {
+            if (this.width.unit == Enums.SizeUnit.Pixel) {
+                renderedElement.style.flex = "0 0 auto";
+                renderedElement.style.width = this.width.physicalSize + "px";
+            }
+            else {
+                renderedElement.style.flex = "1 1 " + (this._computedWeight > 0 ? this._computedWeight : this.width.physicalSize) + "%";
+            }
+        }
+    }
+
+    protected shouldSerialize(context: SerializationContext): boolean {
+        return true;
+    }
+
+    protected get separatorOrientation(): Enums.Orientation {
+        return Enums.Orientation.Vertical;
+    }
+
+    constructor(width: CarouselItemWidth = "stretch") {
+        super();
+
+        this.width = width;
+    }
+
+    getJsonTypeName(): string {
+        return "CarouselItem";
+    }
+
+    get hasVisibleSeparator(): boolean {
+        if (this.parent && this.parent instanceof Carousel) {
+            return this.separatorElement !== undefined && !this.parent.isLeftMostElement(this);
+        }
+        else {
+            return false;
+        }
+    }
+
+    get isStandalone(): boolean {
+        return false;
+    }
+}
 
 export class ColumnSet extends StylableCardElementContainer {
     private _columns: Column[] = [];
@@ -6197,135 +6328,499 @@ export class ColumnSet extends StylableCardElementContainer {
         this._selectAction = value;
     }
 }
-export class Carousel extends Container {
-    //#region Schema
 
-    static readonly widthProperty = new CustomProperty<ColumnWidth>(
-        Versions.v1_0,
-        "width",
-        (sender: SerializableObject, property: PropertyDefinition, source: PropertyBag, context: BaseSerializationContext) => {
-            let result: ColumnWidth = property.defaultValue;
-            let value = source[property.name];
-            let invalidWidth = false;
-
-            if (typeof value === "number" && !isNaN(value)) {
-                result = new SizeAndUnit(value, Enums.SizeUnit.Weight);
-            }
-            else if (value === "auto" || value === "stretch") {
-                result = value;
-            }
-            else if (typeof value === "string") {
-                try {
-                    result = SizeAndUnit.parse(value);
-
-                    if (result.unit === Enums.SizeUnit.Pixel && property.targetVersion.compareTo(context.targetVersion) > 0) {
-                        invalidWidth = true;
-                    }
-                }
-                catch (e) {
-                    invalidWidth = true;
-                }
-            }
-            else {
-                invalidWidth = true;
-            }
-
-            if (invalidWidth) {
+export class Carousel extends StylableCardElementContainer {
+   
+    private _carouselitems: CarouselItem[] = [];
+    private _renderedCarouselItems: CarouselItem[];
+    private createCarouselItemInstance(source: any, context: SerializationContext): CarouselItem | undefined {
+        return context.parseCardObject<CarouselItem>(
+            this,
+            source,
+            [], // Forbidden types not supported for elements for now
+            !this.isDesignMode(),
+            (typeName: string) => {
+                return !typeName || typeName === "CarouselItem" ? new CarouselItem() : undefined;
+            },
+            (typeName: string, errorType: TypeErrorType) => {
                 context.logParseEvent(
-                    sender,
-                    Enums.ValidationEvent.InvalidPropertyValue,
-                    Strings.errors.invalidColumnWidth(value));
+                    undefined,
+                    Enums.ValidationEvent.ElementTypeNotAllowed,
+                    Strings.errors.elementTypeNotAllowed(typeName));
+            });
+    }
+   
+    protected internalRender(): HTMLElement | undefined {
+        this._renderedCarouselItems = [];
 
-                result = "auto";
-            }
+        if (this._carouselitems.length > 0) {
+            // Cache hostConfig to avoid walking the parent hierarchy several times
+            let hostConfig = this.hostConfig;
 
-            return result;
-        },
-        (sender: SerializableObject, property: PropertyDefinition, target: PropertyBag, value: ColumnWidth, context: BaseSerializationContext) => {
-            if (value instanceof SizeAndUnit) {
-                if (value.unit === Enums.SizeUnit.Pixel) {
-                    context.serializeValue(target, "width", value.physicalSize + "px");
+            let element = document.createElement("div");
+            element.className = hostConfig.makeCssClassName("ac-carousel");
+            element.style.display = "flex";
+            element.style.overflow="hidden"; 
+            element.style.position="relative"; 
+            let prevcont = document.createElement("div");
+            prevcont.style.position= "fixed";
+            prevcont.style.width="15px";
+            let prev = document.createElement("div");
+            prev.style.width="12px";
+            prev.style.height="12px";
+            prev.style.borderColor= "#000";
+            prev.style.marginTop= "0px";
+            prev.style.borderBottom="6px solid";
+            prev.style.borderLeft="6px solid";
+            prev.style.transform= "rotate(45deg)";
+            prev.style.marginLeft= "0px";
+            prev.className = hostConfig.makeCssClassName("arrows prev");
+            prevcont.addEventListener("mousedown", function(){
+                if(this.parentElement){
+                    var x=this.parentElement.scrollLeft;
+                    this.parentElement.scrollLeft=x-this.parentElement.offsetWidth-8;
+                    console.log(this.parentElement);
                 }
-                else {
-                    context.serializeNumber(target, "width", value.physicalSize);
+            });
+            let nextcont = document.createElement("div");
+            nextcont.style.position= "fixed";
+            nextcont.style.width="15px";
+            nextcont.style.transform= "translateX(80%)";
+            let next = document.createElement("div");
+            next.style.width="12px";
+            next.style.height="12px";
+            next.style.borderColor= "#000";
+            next.style.marginTop= "0px";
+            next.style.borderBottom="6px solid";
+            next.style.borderLeft="6px solid";
+            next.style.transform= "rotate(-135deg)";
+            next.style.marginLeft= "0px";
+            nextcont.addEventListener("mousedown", function(){
+                if(this.parentElement){
+                    var x=this.parentElement.scrollLeft;
+                    this.parentElement.scrollLeft=x+this.parentElement.offsetWidth+8;
+                    console.log(this.parentElement);
+                }
+            });
+            next.className = hostConfig.makeCssClassName("arrows next");
+            prevcont.appendChild(prev);
+            nextcont.appendChild(next);
+            element.appendChild(prevcont);
+            element.appendChild(nextcont);
+            if (GlobalSettings.useAdvancedCardBottomTruncation) {
+                // See comment in Container.internalRender()
+                element.style.minHeight = '-webkit-min-content';
+            }
+
+            switch (this.horizontalAlignment) {
+                case Enums.HorizontalAlignment.Center:
+                    element.style.justifyContent = "center";
+                    break;
+                case Enums.HorizontalAlignment.Right:
+                    element.style.justifyContent = "flex-end";
+                    break;
+                default:
+                    element.style.justifyContent = "flex-start";
+                    break;
+            }
+
+            let totalWeight: number = 0;
+
+            for (let carouselitem of this._carouselitems) {
+                if (carouselitem.width instanceof SizeAndUnit && (carouselitem.width.unit == Enums.SizeUnit.Weight)) {
+                    totalWeight += carouselitem.width.physicalSize;
                 }
             }
-            else {
-                context.serializeValue(target, "width", value);
+
+            for (let carouselitem of this._carouselitems) {
+                if (carouselitem.width instanceof SizeAndUnit && carouselitem.width.unit == Enums.SizeUnit.Weight && totalWeight > 0) {
+                    let computedWeight = 100 / totalWeight * carouselitem.width.physicalSize;
+
+                    // Best way to emulate "internal" access I know of
+                    carouselitem["_computedWeight"] = computedWeight;
+                }
+
+                let renderedCarouselItem = carouselitem.render();
+
+                if (renderedCarouselItem) {
+                    if (this._renderedCarouselItems.length > 0 && carouselitem.separatorElement) {
+                        carouselitem.separatorElement.style.flex = "0 0 auto";
+
+                        Utils.appendChild(element, carouselitem.separatorElement);
+                    }
+
+                    Utils.appendChild(element, renderedCarouselItem);
+
+                    this._renderedCarouselItems.push(carouselitem);
+                }
             }
-        },
-        "stretch");
 
-    @property(Column.widthProperty)
-    width: ColumnWidth = "stretch";
-
-    //#endregion
-
-    private _computedWeight: number = 0;
-
-    protected adjustRenderedElementSize(renderedElement: HTMLElement) {
-        const minDesignTimeColumnHeight = 20;
-
-        if (this.isDesignMode()) {
-            renderedElement.style.minWidth = "20px";
-            renderedElement.style.minHeight = (!this.minPixelHeight ? minDesignTimeColumnHeight : Math.max(this.minPixelHeight, minDesignTimeColumnHeight)) + "px";
+            return this._renderedCarouselItems.length > 0 ? element : undefined;
         }
         else {
-            renderedElement.style.minWidth = "0";
-
-            if (this.minPixelHeight) {
-                renderedElement.style.minHeight = this.minPixelHeight + "px";
-            }
-        }
-
-        if (this.width === "auto") {
-            renderedElement.style.flex = "0 1 auto";
-        }
-        else if (this.width === "stretch") {
-            renderedElement.style.flex = "1 1 50px";
-        }
-        else if (this.width instanceof SizeAndUnit) {
-            if (this.width.unit == Enums.SizeUnit.Pixel) {
-                renderedElement.style.flex = "0 0 auto";
-                renderedElement.style.width = this.width.physicalSize + "px";
-            }
-            else {
-                renderedElement.style.flex = "1 1 " + (this._computedWeight > 0 ? this._computedWeight : this.width.physicalSize) + "%";
-            }
+            return undefined;
         }
     }
 
-    protected shouldSerialize(context: SerializationContext): boolean {
+    protected truncateOverflow(maxHeight: number): boolean {
+        for (let carouselitem of this._carouselitems) {
+            carouselitem['handleOverflow'](maxHeight);
+        }
+
         return true;
     }
 
-    protected get separatorOrientation(): Enums.Orientation {
-        return Enums.Orientation.Vertical;
+    protected undoOverflowTruncation() {
+        for (let carouselitem of this._carouselitems) {
+            carouselitem['resetOverflow']();
+        }
     }
 
-    constructor(width: ColumnWidth = "stretch") {
-        super();
+    protected get isSelectable(): boolean {
+        return true;
+    }
 
-        this.width = width;
+    protected internalParse(source: any, context: SerializationContext) {
+        super.internalParse(source, context);
+
+        this._carouselitems = [];
+        this._renderedCarouselItems = [];
+
+        let jsonCarouselItems = source["carouselitems"];
+
+        if (Array.isArray(jsonCarouselItems)) {
+            for (let item of jsonCarouselItems) {
+                let carouselitem = this.createCarouselItemInstance(item, context);
+
+                if (carouselitem) {
+                    this._carouselitems.push(carouselitem);
+                }
+            }
+        }
+    }
+
+    protected internalToJSON(target: PropertyBag, context: SerializationContext) {
+        super.internalToJSON(target, context);
+
+        context.serializeArray(target, "carouselitems", this._carouselitems);
+    }
+
+    isFirstElement(element: CardElement): boolean {
+        for (let carouselitem of this._carouselitems) {
+            if (carouselitem.isVisible) {
+                return carouselitem == element;
+            }
+        }
+
+        return false;
+    }
+
+    isBleedingAtTop(): boolean {
+        if (this.isBleeding()) {
+            return true;
+        }
+
+        if (this._renderedCarouselItems && this._renderedCarouselItems.length > 0) {
+            for (let carouselitem of this._carouselitems) {
+                if (carouselitem.isBleedingAtTop()) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    isBleedingAtBottom(): boolean {
+        if (this.isBleeding()) {
+            return true;
+        }
+
+        if (this._renderedCarouselItems && this._renderedCarouselItems.length > 0) {
+            for (let carouselitem of this._carouselitems) {
+                if (carouselitem.isBleedingAtBottom()) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    getItemCount(): number {
+        return this._carouselitems.length;
+    }
+
+    getFirstVisibleRenderedItem(): CardElement | undefined {
+        if (this.renderedElement && this._renderedCarouselItems && this._renderedCarouselItems.length > 0) {
+            return this._renderedCarouselItems[0];
+        }
+        else {
+            return undefined;
+        }
+    }
+
+    getLastVisibleRenderedItem(): CardElement | undefined {
+        if (this.renderedElement && this._renderedCarouselItems && this._renderedCarouselItems.length > 0) {
+            return this._renderedCarouselItems[this._renderedCarouselItems.length - 1];
+        }
+        else {
+            return undefined;
+        }
+    }
+
+    getCarouselItemAt(index: number): CarouselItem {
+        return this._carouselitems[index];
+    }
+
+    getItemAt(index: number): CardElement {
+        return this.getCarouselItemAt(index);
     }
 
     getJsonTypeName(): string {
-        return "Column";
+        return "Carousel";
     }
 
-    get hasVisibleSeparator(): boolean {
-        if (this.parent && this.parent instanceof ColumnSet) {
-            return this.separatorElement !== undefined && !this.parent.isLeftMostElement(this);
+    internalValidateProperties(context: ValidationResults) {
+        super.internalValidateProperties(context);
+
+        let weightedCarouselItems: number = 0;
+        let stretchedCarouselItems: number = 0;
+
+        for (let carouselitem of this._carouselitems) {
+            if (typeof carouselitem.width === "number") {
+                weightedCarouselItems++;
+            }
+            else if (carouselitem.width === "stretch") {
+                stretchedCarouselItems++;
+            }
+        }
+
+        if (weightedCarouselItems > 0 && stretchedCarouselItems > 0) {
+            context.addFailure(
+                this,
+                Enums.ValidationEvent.Hint,
+                Strings.hints.dontUseWeightedAndStrecthedCarouselItemsInSameSet());
+        }
+    }
+
+    addCarouselItem(carouselitem: CarouselItem) {
+        if (!carouselitem.parent) {
+            this._carouselitems.push(carouselitem);
+
+            carouselitem.setParent(this);
         }
         else {
-            return false;
+            throw new Error(Strings.errors.carouselItemAlreadyBelongsToAnotherSet());
         }
     }
 
-    get isStandalone(): boolean {
+    removeItem(item: CardElement): boolean {
+        if (item instanceof CarouselItem) {
+            let itemIndex = this._carouselitems.indexOf(item);
+
+            if (itemIndex >= 0) {
+                this._carouselitems.splice(itemIndex, 1);
+
+                item.setParent(undefined);
+
+                this.updateLayout();
+
+                return true;
+            }
+        }
+
         return false;
     }
+
+    indexOf(cardElement: CardElement): number {
+        return cardElement instanceof CarouselItem ? this._carouselitems.indexOf(cardElement) : -1;
+    }
+
+    isLeftMostElement(element: CardElement): boolean {
+        return this._carouselitems.indexOf(<CarouselItem>element) == 0;
+    }
+
+    isRightMostElement(element: CardElement): boolean {
+        return this._carouselitems.indexOf(<CarouselItem>element) == this._carouselitems.length - 1;
+    }
+
+    isTopElement(element: CardElement): boolean {
+        return this._carouselitems.indexOf(<CarouselItem>element) >= 0;
+    }
+
+    isBottomElement(element: CardElement): boolean {
+        return this._carouselitems.indexOf(<CarouselItem>element) >= 0;
+    }
+
+    getActionById(id: string): Action | undefined {
+        let result: Action | undefined = undefined;
+
+        for (let carouselitem of this._carouselitems) {
+            result = carouselitem.getActionById(id);
+
+            if (result) {
+                break;
+            }
+        }
+
+        return result;
+    }
+
+    get bleed(): boolean {
+        return this.getBleed();
+    }
+
+    set bleed(value: boolean) {
+        this.setBleed(value);
+    }
+
+    get padding(): PaddingDefinition | undefined {
+        return this.getPadding();
+    }
+
+    set padding(value: PaddingDefinition | undefined) {
+        this.setPadding(value);
+    }
+
+    get selectAction(): Action | undefined {
+        return this._selectAction;
+    }
+
+    set selectAction(value: Action | undefined) {
+        this._selectAction = value;
+    }
 }
+//export type CarouselWidth = SizeAndUnit | "auto" | "stretch";
+// export class Carousel extends Container {
+//     //#region Schema
+
+//     static readonly widthProperty = new CustomProperty<CarouselWidth>(
+//         Versions.v1_0,
+//         "width",
+//         (sender: SerializableObject, property: PropertyDefinition, source: PropertyBag, context: BaseSerializationContext) => {
+//             let result: CarouselWidth = property.defaultValue;
+//             let value = source[property.name];
+//             let invalidWidth = false;
+
+//             if (typeof value === "number" && !isNaN(value)) {
+//                 result = new SizeAndUnit(value, Enums.SizeUnit.Weight);
+//             }
+//             else if (value === "auto" || value === "stretch") {
+//                 result = value;
+//             }
+//             else if (typeof value === "string") {
+//                 try {
+//                     result = SizeAndUnit.parse(value);
+
+//                     if (result.unit === Enums.SizeUnit.Pixel && property.targetVersion.compareTo(context.targetVersion) > 0) {
+//                         invalidWidth = true;
+//                     }
+//                 }
+//                 catch (e) {
+//                     invalidWidth = true;
+//                 }
+//             }
+//             else {
+//                 invalidWidth = true;
+//             }
+
+//             if (invalidWidth) {
+//                 context.logParseEvent(
+//                     sender,
+//                     Enums.ValidationEvent.InvalidPropertyValue,
+//                     Strings.errors.invalidCarouselWidth(value));
+
+//                 result = "auto";
+//             }
+
+//             return result;
+//         },
+//         (sender: SerializableObject, property: PropertyDefinition, target: PropertyBag, value: CarouselWidth, context: BaseSerializationContext) => {
+//             if (value instanceof SizeAndUnit) {
+//                 if (value.unit === Enums.SizeUnit.Pixel) {
+//                     context.serializeValue(target, "width", value.physicalSize + "px");
+//                 }
+//                 else {
+//                     context.serializeNumber(target, "width", value.physicalSize);
+//                 }
+//             }
+//             else {
+//                 context.serializeValue(target, "width", value);
+//             }
+//         },
+//         "stretch");
+
+//     @property(Carousel.widthProperty)
+//     width: CarouselWidth = "stretch";
+
+//     //#endregion
+
+//     private _computedWeight: number = 0;
+
+//     protected adjustRenderedElementSize(renderedElement: HTMLElement) {
+//         const minDesignTimeCarouselHeight = 20;
+
+//         if (this.isDesignMode()) {
+//             renderedElement.style.minWidth = "20px";
+//             renderedElement.style.minHeight = (!this.minPixelHeight ? minDesignTimeCarouselHeight : Math.max(this.minPixelHeight, minDesignTimeCarouselHeight)) + "px";
+//         }
+//         else {
+//             renderedElement.style.minWidth = "0";
+
+//             if (this.minPixelHeight) {
+//                 renderedElement.style.minHeight = this.minPixelHeight + "px";
+//             }
+//         }
+
+//         if (this.width === "auto") {
+//             renderedElement.style.flex = "0 1 auto";
+//         }
+//         else if (this.width === "stretch") {
+//             renderedElement.style.flex = "1 1 50px";
+//         }
+//         else if (this.width instanceof SizeAndUnit) {
+//             if (this.width.unit == Enums.SizeUnit.Pixel) {
+//                 renderedElement.style.flex = "0 0 auto";
+//                 renderedElement.style.width = this.width.physicalSize + "px";
+//             }
+//             else {
+//                 renderedElement.style.flex = "1 1 " + (this._computedWeight > 0 ? this._computedWeight : this.width.physicalSize) + "%";
+//             }
+//         }
+//     }
+
+//     protected shouldSerialize(context: SerializationContext): boolean {
+//         return true;
+//     }
+
+//     protected get separatorOrientation(): Enums.Orientation {
+//         return Enums.Orientation.Vertical;
+//     }
+
+//     constructor(width: CarouselWidth = "stretch") {
+//         super();
+
+//         this.width = width;
+//     }
+
+//     getJsonTypeName(): string {
+//         return "Carousel";
+//     }
+
+//     get hasVisibleSeparator(): boolean {
+//         if (this.parent && this.parent instanceof ColumnSet) {
+//             return this.separatorElement !== undefined && !this.parent.isLeftMostElement(this);
+//         }
+//         else {
+//             return false;
+//         }
+//     }
+
+//     get isStandalone(): boolean {
+//         return false;
+//     }
+// }
 
 function raiseImageLoadedEvent(image: Image) {
     let card = image.getRootElement() as GenietalkCard;

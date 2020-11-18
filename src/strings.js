@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+exports.__esModule = true;
 exports.Strings = void 0;
 var Strings = /** @class */ (function () {
     function Strings() {
@@ -12,7 +12,7 @@ var Strings = /** @class */ (function () {
         invalidPropertyValue: function (value, propertyName) { return "Invalid value \"" + value + "\" for property \"" + propertyName + "\"."; },
         showCardMustHaveCard: function () { return "\"An Action.ShowCard must have its \"card\" property set to a valid GenietalkCard object."; },
         invalidColumnWidth: function (invalidWidth) { return "Invalid column width \"" + invalidWidth + "\" - defaulting to \"auto\"."; },
-        invalidCarouselItemWidth: function (invalidWidth) { return "Invalid Carousel width \"" + invalidWidth + "\" - defaulting to \"auto\"."; },
+        invalidCarouselWidth: function (invalidWidth) { return "Invalid Carousel width \"" + invalidWidth + "\" - defaulting to \"auto\"."; },
         invalidCardVersion: function (defaultingToVersion) { return "Invalid card version. Defaulting to \"" + defaultingToVersion + "\"."; },
         invalidVersionString: function (versionString) { return "Invalid version string \"" + versionString + "\"."; },
         propertyValueNotSupported: function (value, propertyName, supportedInVersion, versionUsed) { return "Value \"" + value + "\" for property \"" + propertyName + "\" is supported in version " + supportedInVersion + ", but you are using version " + versionUsed + "."; },
@@ -28,7 +28,6 @@ var Strings = /** @class */ (function () {
         actionHttpHeadersMustHaveNameAndValue: function () { return "All headers of an Action.Http must have their name and value properties set."; },
         tooManyActions: function (maximumActions) { return "Maximum number of actions exceeded (" + maximumActions + ")."; },
         columnAlreadyBelongsToAnotherSet: function () { return "This column already belongs to another ColumnSet."; },
-        carouselItemAlreadyBelongsToAnotherSet: function () { return "This carouselItem already belongs to another Carousel."; },
         invalidCardType: function () { return "Invalid or missing card type. Make sure the card's type property is set to \"GenietalkCard\"."; },
         unsupportedCardVersion: function (version, maxSupportedVersion) { return "The specified card version (" + version + ") is not supported. The maximum supported card version is " + maxSupportedVersion + "."; },
         duplicateId: function (id) { return "Duplicate Id \"" + id + "\"."; },
@@ -39,8 +38,7 @@ var Strings = /** @class */ (function () {
         elementTypeNotStandalone: function (typeName) { return "Elements of type " + typeName + " cannot be used as standalone elements."; }
     };
     Strings.hints = {
-        dontUseWeightedAndStrecthedColumnsInSameSet: function () { return "It is not recommended to use weighted and stretched columns in the same ColumnSet, because in such a situation stretched columns will always get the minimum amount of space."; },
-        dontUseWeightedAndStrecthedCarouselItemsInSameSet: function () { return "It is not recommended to use weighted and stretched CarouselItems in the same Carousel, because in such a situation stretched columns will always get the minimum amount of space."; }
+        dontUseWeightedAndStrecthedColumnsInSameSet: function () { return "It is not recommended to use weighted and stretched columns in the same ColumnSet, because in such a situation stretched columns will always get the minimum amount of space."; }
     };
     Strings.defaults = {
         inlineActionTitle: function () { return "Inline Action"; }
@@ -48,4 +46,3 @@ var Strings = /** @class */ (function () {
     return Strings;
 }());
 exports.Strings = Strings;
-//# sourceMappingURL=strings.js.map

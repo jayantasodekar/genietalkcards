@@ -76,12 +76,22 @@ export interface IColumn extends ICardElement {
     items?: ICardElement[];
     width?: number | "auto" | "stretch" | "auto";
 }
-
+export interface ICarouselItem extends ICardElement {
+    backgroundImage?: IBackgroundImage | string;
+    style?: ContainerStyle;
+    verticalContentAlignment?: VerticalAlignment;
+    selectAction?: IAction;
+    items?: ICardElement[];
+    width?: number | "auto" | "stretch" | "auto";
+}
 export interface IColumnSet extends ICardElement {
     type: "ColumnSet";
     columns: IColumn[];
 }
-
+export interface ICarousel extends ICardElement {
+    type: "Carousel";
+    carouselitems: ICarouselItem[];
+}
 export interface IFact {
     title: string;
     value: string;
@@ -170,7 +180,7 @@ export interface IGenietalkCard extends ICardElement {
     type: "GenietalkCard";
     version?: IVersion | string;
     backgroundImage?: IBackgroundImage | string;
-    body?: (ITextBlock | IImage | IImageSet | IFactSet | IColumnSet | IContainer)[];
+    body?: (ITextBlock | IImage | IImageSet | IFactSet | IColumnSet | IContainer | ICarousel)[];
     actions?: (ISubmitAction | IOpenUrlAction | IShowCardAction | ISubmitQueryAction)[];
     speak?: string;
 }

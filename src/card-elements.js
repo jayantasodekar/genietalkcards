@@ -3,7 +3,7 @@ var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
             ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
         return extendStatics(d, b);
     };
     return function (d, b) {
@@ -18,8 +18,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.SerializationContext = exports.GlobalRegistry = exports.GenietalkCard = exports.ContainerWithActions = exports.Carousel = exports.ColumnSet = exports.CarouselItem = exports.Column = exports.Container = exports.BackgroundImage = exports.StylableCardElementContainer = exports.ActionSet = exports.ShowCardAction = exports.HttpAction = exports.HttpHeader = exports.ToggleVisibilityAction = exports.OpenUrlAction = exports.SubmitQueryAction = exports.SubmitAction = exports.Action = exports.TimeInput = exports.TimeProperty = exports.DateInput = exports.NumberInput = exports.ChoiceSetInput = exports.Choice = exports.ToggleInput = exports.TextInput = exports.Input = exports.Media = exports.MediaSource = exports.ImageSet = exports.CardElementContainer = exports.Image = exports.FactSet = exports.Fact = exports.RichTextBlock = exports.TextRun = exports.TextBlock = exports.BaseTextBlock = exports.ActionProperty = exports.CardElement = void 0;
+exports.__esModule = true;
+exports.SerializationContext = exports.GlobalRegistry = exports.GenietalkCard = exports.ContainerWithActions = exports.Carousel = exports.ColumnSet = exports.Column = exports.Container = exports.BackgroundImage = exports.StylableCardElementContainer = exports.ActionSet = exports.ShowCardAction = exports.HttpAction = exports.HttpHeader = exports.ToggleVisibilityAction = exports.OpenUrlAction = exports.SubmitQueryAction = exports.SubmitAction = exports.Action = exports.TimeInput = exports.TimeProperty = exports.DateInput = exports.NumberInput = exports.ChoiceSetInput = exports.Choice = exports.ToggleInput = exports.TextInput = exports.Input = exports.Media = exports.MediaSource = exports.ImageSet = exports.CardElementContainer = exports.Image = exports.FactSet = exports.Fact = exports.RichTextBlock = exports.TextRun = exports.TextBlock = exports.BaseTextBlock = exports.ActionProperty = exports.CardElement = void 0;
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 var Enums = require("./enums");
@@ -173,7 +173,7 @@ var CardElement = /** @class */ (function (_super) {
     };
     CardElement.prototype.createPlaceholderElement = function () {
         var styleDefinition = this.getEffectiveStyleDefinition();
-        var foregroundCssColor = Utils.stringToCssColor(styleDefinition.foregroundColors.default.subtle);
+        var foregroundCssColor = Utils.stringToCssColor(styleDefinition.foregroundColors["default"].subtle);
         var element = document.createElement("div");
         element.style.border = "1px dashed " + foregroundCssColor;
         element.style.padding = "4px";
@@ -528,22 +528,22 @@ var CardElement = /** @class */ (function (_super) {
     CardElement.spacingProperty = new serialization_1.EnumProperty(serialization_1.Versions.v1_0, "spacing", Enums.Spacing, Enums.Spacing.Default);
     __decorate([
         serialization_1.property(CardElement.horizontalAlignmentProperty)
-    ], CardElement.prototype, "horizontalAlignment", void 0);
+    ], CardElement.prototype, "horizontalAlignment");
     __decorate([
         serialization_1.property(CardElement.spacingProperty)
-    ], CardElement.prototype, "spacing", void 0);
+    ], CardElement.prototype, "spacing");
     __decorate([
         serialization_1.property(CardElement.separatorProperty)
-    ], CardElement.prototype, "separator", void 0);
+    ], CardElement.prototype, "separator");
     __decorate([
         serialization_1.property(CardElement.heightProperty)
-    ], CardElement.prototype, "height", void 0);
+    ], CardElement.prototype, "height");
     __decorate([
         serialization_1.property(CardElement.langProperty)
-    ], CardElement.prototype, "lang", null);
+    ], CardElement.prototype, "lang");
     __decorate([
         serialization_1.property(CardElement.isVisibleProperty)
-    ], CardElement.prototype, "isVisible", null);
+    ], CardElement.prototype, "isVisible");
     return CardElement;
 }(card_object_1.CardObject));
 exports.CardElement = CardElement;
@@ -609,7 +609,7 @@ var BaseTextBlock = /** @class */ (function (_super) {
             case Enums.TextSize.ExtraLarge:
                 return fontType.fontSizes.extraLarge;
             default:
-                return fontType.fontSizes.default;
+                return fontType.fontSizes["default"];
         }
     };
     BaseTextBlock.prototype.getColorDefinition = function (colorSet, color) {
@@ -627,7 +627,7 @@ var BaseTextBlock = /** @class */ (function (_super) {
             case Enums.TextColor.Attention:
                 return colorSet.attention;
             default:
-                return colorSet.default;
+                return colorSet["default"];
         }
     };
     BaseTextBlock.prototype.setText = function (value) {
@@ -662,12 +662,12 @@ var BaseTextBlock = /** @class */ (function (_super) {
                 fontSize = fontType.fontSizes.extraLarge;
                 break;
             default:
-                fontSize = fontType.fontSizes.default;
+                fontSize = fontType.fontSizes["default"];
                 break;
         }
         targetElement.style.fontSize = fontSize + "px";
         var colorDefinition = this.getColorDefinition(this.getEffectiveStyleDefinition().foregroundColors, this.effectiveColor);
-        targetElement.style.color = Utils.stringToCssColor(this.isSubtle ? colorDefinition.subtle : colorDefinition.default);
+        targetElement.style.color = Utils.stringToCssColor(this.isSubtle ? colorDefinition.subtle : colorDefinition["default"]);
         var fontWeight;
         switch (this.weight) {
             case Enums.TextWeight.Lighter:
@@ -677,7 +677,7 @@ var BaseTextBlock = /** @class */ (function (_super) {
                 fontWeight = fontType.fontWeights.bolder;
                 break;
             default:
-                fontWeight = fontType.fontWeights.default;
+                fontWeight = fontType.fontWeights["default"];
                 break;
         }
         targetElement.style.fontWeight = fontWeight.toString();
@@ -702,25 +702,25 @@ var BaseTextBlock = /** @class */ (function (_super) {
     BaseTextBlock.selectActionProperty = new ActionProperty(serialization_1.Versions.v1_1, "selectAction", ["Action.ShowCard"]);
     __decorate([
         serialization_1.property(BaseTextBlock.sizeProperty)
-    ], BaseTextBlock.prototype, "size", void 0);
+    ], BaseTextBlock.prototype, "size");
     __decorate([
         serialization_1.property(BaseTextBlock.weightProperty)
-    ], BaseTextBlock.prototype, "weight", void 0);
+    ], BaseTextBlock.prototype, "weight");
     __decorate([
         serialization_1.property(BaseTextBlock.colorProperty)
-    ], BaseTextBlock.prototype, "color", void 0);
+    ], BaseTextBlock.prototype, "color");
     __decorate([
         serialization_1.property(BaseTextBlock.fontTypeProperty)
-    ], BaseTextBlock.prototype, "fontType", void 0);
+    ], BaseTextBlock.prototype, "fontType");
     __decorate([
         serialization_1.property(BaseTextBlock.isSubtleProperty)
-    ], BaseTextBlock.prototype, "isSubtle", void 0);
+    ], BaseTextBlock.prototype, "isSubtle");
     __decorate([
         serialization_1.property(BaseTextBlock.textProperty)
-    ], BaseTextBlock.prototype, "text", null);
+    ], BaseTextBlock.prototype, "text");
     __decorate([
         serialization_1.property(BaseTextBlock.selectActionProperty)
-    ], BaseTextBlock.prototype, "selectAction", void 0);
+    ], BaseTextBlock.prototype, "selectAction");
     return BaseTextBlock;
 }(CardElement));
 exports.BaseTextBlock = BaseTextBlock;
@@ -933,7 +933,7 @@ var TextBlock = /** @class */ (function (_super) {
                     this._computedLineHeight = lineHeights.extraLarge;
                     break;
                 default:
-                    this._computedLineHeight = lineHeights.default;
+                    this._computedLineHeight = lineHeights["default"];
                     break;
             }
         }
@@ -961,10 +961,10 @@ var TextBlock = /** @class */ (function (_super) {
     TextBlock.maxLinesProperty = new serialization_1.NumProperty(serialization_1.Versions.v1_0, "maxLines");
     __decorate([
         serialization_1.property(TextBlock.wrapProperty)
-    ], TextBlock.prototype, "wrap", void 0);
+    ], TextBlock.prototype, "wrap");
     __decorate([
         serialization_1.property(TextBlock.maxLinesProperty)
-    ], TextBlock.prototype, "maxLines", void 0);
+    ], TextBlock.prototype, "maxLines");
     return TextBlock;
 }(BaseTextBlock));
 exports.TextBlock = TextBlock;
@@ -1035,7 +1035,7 @@ var TextRun = /** @class */ (function (_super) {
         }
         if (this.highlight) {
             var colorDefinition = this.getColorDefinition(this.getEffectiveStyleDefinition().foregroundColors, this.effectiveColor);
-            targetElement.style.backgroundColor = Utils.stringToCssColor(this.isSubtle ? colorDefinition.highlightColors.subtle : colorDefinition.highlightColors.default);
+            targetElement.style.backgroundColor = Utils.stringToCssColor(this.isSubtle ? colorDefinition.highlightColors.subtle : colorDefinition.highlightColors["default"]);
         }
         if (this.underline) {
             targetElement.style.textDecoration = "underline";
@@ -1064,16 +1064,16 @@ var TextRun = /** @class */ (function (_super) {
     TextRun.underlineProperty = new serialization_1.BoolProperty(serialization_1.Versions.v1_3, "underline", false);
     __decorate([
         serialization_1.property(TextRun.italicProperty)
-    ], TextRun.prototype, "italic", void 0);
+    ], TextRun.prototype, "italic");
     __decorate([
         serialization_1.property(TextRun.strikethroughProperty)
-    ], TextRun.prototype, "strikethrough", void 0);
+    ], TextRun.prototype, "strikethrough");
     __decorate([
         serialization_1.property(TextRun.highlightProperty)
-    ], TextRun.prototype, "highlight", void 0);
+    ], TextRun.prototype, "highlight");
     __decorate([
         serialization_1.property(TextRun.underlineProperty)
-    ], TextRun.prototype, "underline", void 0);
+    ], TextRun.prototype, "underline");
     return TextRun;
 }(BaseTextBlock));
 exports.TextRun = TextRun;
@@ -1230,10 +1230,10 @@ var Fact = /** @class */ (function (_super) {
     Fact.valueProperty = new serialization_1.StringProperty(serialization_1.Versions.v1_0, "value");
     __decorate([
         serialization_1.property(Fact.titleProperty)
-    ], Fact.prototype, "name", void 0);
+    ], Fact.prototype, "name");
     __decorate([
         serialization_1.property(Fact.valueProperty)
-    ], Fact.prototype, "value", void 0);
+    ], Fact.prototype, "value");
     return Fact;
 }(serialization_1.SerializableObject));
 exports.Fact = Fact;
@@ -1319,7 +1319,7 @@ var FactSet = /** @class */ (function (_super) {
     FactSet.factsProperty = new serialization_1.SerializableObjectCollectionProperty(serialization_1.Versions.v1_0, "facts", Fact);
     __decorate([
         serialization_1.property(FactSet.factsProperty)
-    ], FactSet.prototype, "facts", void 0);
+    ], FactSet.prototype, "facts");
     return FactSet;
 }(CardElement));
 exports.FactSet = FactSet;
@@ -1548,28 +1548,28 @@ var Image = /** @class */ (function (_super) {
     Image.selectActionProperty = new ActionProperty(serialization_1.Versions.v1_1, "selectAction", ["Action.ShowCard"]);
     __decorate([
         serialization_1.property(Image.urlProperty)
-    ], Image.prototype, "url", void 0);
+    ], Image.prototype, "url");
     __decorate([
         serialization_1.property(Image.altTextProperty)
-    ], Image.prototype, "altText", void 0);
+    ], Image.prototype, "altText");
     __decorate([
         serialization_1.property(Image.backgroundColorProperty)
-    ], Image.prototype, "backgroundColor", void 0);
+    ], Image.prototype, "backgroundColor");
     __decorate([
         serialization_1.property(Image.sizeProperty)
-    ], Image.prototype, "size", void 0);
+    ], Image.prototype, "size");
     __decorate([
         serialization_1.property(Image.styleProperty)
-    ], Image.prototype, "style", void 0);
+    ], Image.prototype, "style");
     __decorate([
         serialization_1.property(Image.pixelWidthProperty)
-    ], Image.prototype, "pixelWidth", void 0);
+    ], Image.prototype, "pixelWidth");
     __decorate([
         serialization_1.property(Image.pixelHeightProperty)
-    ], Image.prototype, "pixelHeight", void 0);
+    ], Image.prototype, "pixelHeight");
     __decorate([
         serialization_1.property(Image.selectActionProperty)
-    ], Image.prototype, "selectAction", void 0);
+    ], Image.prototype, "selectAction");
     return Image;
 }(CardElement));
 exports.Image = Image;
@@ -1705,7 +1705,7 @@ var CardElementContainer = /** @class */ (function (_super) {
     CardElementContainer.selectActionProperty = new ActionProperty(serialization_1.Versions.v1_1, "selectAction", ["Action.ShowCard"]);
     __decorate([
         serialization_1.property(CardElementContainer.selectActionProperty)
-    ], CardElementContainer.prototype, "_selectAction", void 0);
+    ], CardElementContainer.prototype, "_selectAction");
     return CardElementContainer;
 }(CardElement));
 exports.CardElementContainer = CardElementContainer;
@@ -1793,10 +1793,10 @@ var ImageSet = /** @class */ (function (_super) {
     ImageSet.imageSizeProperty = new serialization_1.EnumProperty(serialization_1.Versions.v1_0, "imageSize", Enums.ImageSize, Enums.ImageSize.Medium);
     __decorate([
         serialization_1.property(ImageSet.imagesProperty)
-    ], ImageSet.prototype, "_images", void 0);
+    ], ImageSet.prototype, "_images");
     __decorate([
         serialization_1.property(ImageSet.imageSizeProperty)
-    ], ImageSet.prototype, "imageSize", void 0);
+    ], ImageSet.prototype, "imageSize");
     return ImageSet;
 }(CardElementContainer));
 exports.ImageSet = ImageSet;
@@ -1829,10 +1829,10 @@ var MediaSource = /** @class */ (function (_super) {
     MediaSource.urlProperty = new serialization_1.StringProperty(serialization_1.Versions.v1_1, "url");
     __decorate([
         serialization_1.property(MediaSource.mimeTypeProperty)
-    ], MediaSource.prototype, "mimeType", void 0);
+    ], MediaSource.prototype, "mimeType");
     __decorate([
         serialization_1.property(MediaSource.urlProperty)
-    ], MediaSource.prototype, "url", void 0);
+    ], MediaSource.prototype, "url");
     return MediaSource;
 }(serialization_1.SerializableObject));
 exports.MediaSource = MediaSource;
@@ -2030,13 +2030,13 @@ var Media = /** @class */ (function (_super) {
     Media.supportedMediaTypes = ["audio", "video"];
     __decorate([
         serialization_1.property(Media.sourcesProperty)
-    ], Media.prototype, "sources", void 0);
+    ], Media.prototype, "sources");
     __decorate([
         serialization_1.property(Media.posterProperty)
-    ], Media.prototype, "poster", void 0);
+    ], Media.prototype, "poster");
     __decorate([
         serialization_1.property(Media.altTextProperty)
-    ], Media.prototype, "altText", void 0);
+    ], Media.prototype, "altText");
     return Media;
 }(CardElement));
 exports.Media = Media;
@@ -2222,13 +2222,13 @@ var Input = /** @class */ (function (_super) {
     Input.errorMessageProperty = new serialization_1.StringProperty(serialization_1.Versions.v1_3, "errorMessage", true);
     __decorate([
         serialization_1.property(Input.labelProperty)
-    ], Input.prototype, "label", void 0);
+    ], Input.prototype, "label");
     __decorate([
         serialization_1.property(Input.isRequiredProperty)
-    ], Input.prototype, "isRequired", void 0);
+    ], Input.prototype, "isRequired");
     __decorate([
         serialization_1.property(Input.errorMessageProperty)
-    ], Input.prototype, "errorMessage", void 0);
+    ], Input.prototype, "errorMessage");
     return Input;
 }(CardElement));
 exports.Input = Input;
@@ -2371,25 +2371,25 @@ var TextInput = /** @class */ (function (_super) {
     TextInput.regexProperty = new serialization_1.StringProperty(serialization_1.Versions.v1_3, "regex", true);
     __decorate([
         serialization_1.property(TextInput.valueProperty)
-    ], TextInput.prototype, "defaultValue", void 0);
+    ], TextInput.prototype, "defaultValue");
     __decorate([
         serialization_1.property(TextInput.maxLengthProperty)
-    ], TextInput.prototype, "maxLength", void 0);
+    ], TextInput.prototype, "maxLength");
     __decorate([
         serialization_1.property(TextInput.isMultilineProperty)
-    ], TextInput.prototype, "isMultiline", void 0);
+    ], TextInput.prototype, "isMultiline");
     __decorate([
         serialization_1.property(TextInput.placeholderProperty)
-    ], TextInput.prototype, "placeholder", void 0);
+    ], TextInput.prototype, "placeholder");
     __decorate([
         serialization_1.property(TextInput.styleProperty)
-    ], TextInput.prototype, "style", void 0);
+    ], TextInput.prototype, "style");
     __decorate([
         serialization_1.property(TextInput.inlineActionProperty)
-    ], TextInput.prototype, "inlineAction", void 0);
+    ], TextInput.prototype, "inlineAction");
     __decorate([
         serialization_1.property(TextInput.regexProperty)
-    ], TextInput.prototype, "regex", void 0);
+    ], TextInput.prototype, "regex");
     return TextInput;
 }(Input));
 exports.TextInput = TextInput;
@@ -2506,19 +2506,19 @@ var ToggleInput = /** @class */ (function (_super) {
     ToggleInput.wrapProperty = new serialization_1.BoolProperty(serialization_1.Versions.v1_2, "wrap", false);
     __decorate([
         serialization_1.property(ToggleInput.valueProperty)
-    ], ToggleInput.prototype, "defaultValue", void 0);
+    ], ToggleInput.prototype, "defaultValue");
     __decorate([
         serialization_1.property(ToggleInput.titleProperty)
-    ], ToggleInput.prototype, "title", void 0);
+    ], ToggleInput.prototype, "title");
     __decorate([
         serialization_1.property(ToggleInput.valueOnProperty)
-    ], ToggleInput.prototype, "valueOn", void 0);
+    ], ToggleInput.prototype, "valueOn");
     __decorate([
         serialization_1.property(ToggleInput.valueOffProperty)
-    ], ToggleInput.prototype, "valueOff", void 0);
+    ], ToggleInput.prototype, "valueOff");
     __decorate([
         serialization_1.property(ToggleInput.wrapProperty)
-    ], ToggleInput.prototype, "wrap", void 0);
+    ], ToggleInput.prototype, "wrap");
     return ToggleInput;
 }(Input));
 exports.ToggleInput = ToggleInput;
@@ -2539,10 +2539,10 @@ var Choice = /** @class */ (function (_super) {
     Choice.valueProperty = new serialization_1.StringProperty(serialization_1.Versions.v1_0, "value");
     __decorate([
         serialization_1.property(Choice.titleProperty)
-    ], Choice.prototype, "title", void 0);
+    ], Choice.prototype, "title");
     __decorate([
         serialization_1.property(Choice.valueProperty)
-    ], Choice.prototype, "value", void 0);
+    ], Choice.prototype, "value");
     return Choice;
 }(serialization_1.SerializableObject));
 exports.Choice = Choice;
@@ -2796,22 +2796,22 @@ var ChoiceSetInput = /** @class */ (function (_super) {
     ChoiceSetInput.uniqueCategoryCounter = 0;
     __decorate([
         serialization_1.property(ChoiceSetInput.valueProperty)
-    ], ChoiceSetInput.prototype, "defaultValue", void 0);
+    ], ChoiceSetInput.prototype, "defaultValue");
     __decorate([
         serialization_1.property(ChoiceSetInput.styleProperty)
-    ], ChoiceSetInput.prototype, "style", void 0);
+    ], ChoiceSetInput.prototype, "style");
     __decorate([
         serialization_1.property(ChoiceSetInput.isMultiSelectProperty)
-    ], ChoiceSetInput.prototype, "isMultiSelect", void 0);
+    ], ChoiceSetInput.prototype, "isMultiSelect");
     __decorate([
         serialization_1.property(ChoiceSetInput.placeholderProperty)
-    ], ChoiceSetInput.prototype, "placeholder", void 0);
+    ], ChoiceSetInput.prototype, "placeholder");
     __decorate([
         serialization_1.property(ChoiceSetInput.wrapProperty)
-    ], ChoiceSetInput.prototype, "wrap", void 0);
+    ], ChoiceSetInput.prototype, "wrap");
     __decorate([
         serialization_1.property(ChoiceSetInput.choicesProperty)
-    ], ChoiceSetInput.prototype, "choices", void 0);
+    ], ChoiceSetInput.prototype, "choices");
     return ChoiceSetInput;
 }(Input));
 exports.ChoiceSetInput = ChoiceSetInput;
@@ -2876,16 +2876,16 @@ var NumberInput = /** @class */ (function (_super) {
     NumberInput.maxProperty = new serialization_1.NumProperty(serialization_1.Versions.v1_0, "max");
     __decorate([
         serialization_1.property(NumberInput.valueProperty)
-    ], NumberInput.prototype, "defaultValue", void 0);
+    ], NumberInput.prototype, "defaultValue");
     __decorate([
         serialization_1.property(NumberInput.minProperty)
-    ], NumberInput.prototype, "min", void 0);
+    ], NumberInput.prototype, "min");
     __decorate([
         serialization_1.property(NumberInput.maxProperty)
-    ], NumberInput.prototype, "max", void 0);
+    ], NumberInput.prototype, "max");
     __decorate([
         serialization_1.property(NumberInput.placeholderProperty)
-    ], NumberInput.prototype, "placeholder", void 0);
+    ], NumberInput.prototype, "placeholder");
     return NumberInput;
 }(Input));
 exports.NumberInput = NumberInput;
@@ -2952,16 +2952,16 @@ var DateInput = /** @class */ (function (_super) {
     DateInput.maxProperty = new serialization_1.StringProperty(serialization_1.Versions.v1_0, "max");
     __decorate([
         serialization_1.property(DateInput.valueProperty)
-    ], DateInput.prototype, "defaultValue", void 0);
+    ], DateInput.prototype, "defaultValue");
     __decorate([
         serialization_1.property(DateInput.minProperty)
-    ], DateInput.prototype, "min", void 0);
+    ], DateInput.prototype, "min");
     __decorate([
         serialization_1.property(DateInput.maxProperty)
-    ], DateInput.prototype, "max", void 0);
+    ], DateInput.prototype, "max");
     __decorate([
         serialization_1.property(DateInput.placeholderProperty)
-    ], DateInput.prototype, "placeholder", void 0);
+    ], DateInput.prototype, "placeholder");
     return DateInput;
 }(Input));
 exports.DateInput = DateInput;
@@ -3046,16 +3046,16 @@ var TimeInput = /** @class */ (function (_super) {
     TimeInput.maxProperty = new TimeProperty(serialization_1.Versions.v1_0, "max");
     __decorate([
         serialization_1.property(TimeInput.valueProperty)
-    ], TimeInput.prototype, "defaultValue", void 0);
+    ], TimeInput.prototype, "defaultValue");
     __decorate([
         serialization_1.property(TimeInput.minProperty)
-    ], TimeInput.prototype, "min", void 0);
+    ], TimeInput.prototype, "min");
     __decorate([
         serialization_1.property(TimeInput.maxProperty)
-    ], TimeInput.prototype, "max", void 0);
+    ], TimeInput.prototype, "max");
     __decorate([
         serialization_1.property(TimeInput.placeholderProperty)
-    ], TimeInput.prototype, "placeholder", void 0);
+    ], TimeInput.prototype, "placeholder");
     return TimeInput;
 }(Input));
 exports.TimeInput = TimeInput;
@@ -3324,13 +3324,13 @@ var Action = /** @class */ (function (_super) {
     Action.ignoreInputValidationProperty = new serialization_1.BoolProperty(serialization_1.Versions.v1_3, "ignoreInputValidation", false);
     __decorate([
         serialization_1.property(Action.titleProperty)
-    ], Action.prototype, "title", void 0);
+    ], Action.prototype, "title");
     __decorate([
         serialization_1.property(Action.iconUrlProperty)
-    ], Action.prototype, "iconUrl", void 0);
+    ], Action.prototype, "iconUrl");
     __decorate([
         serialization_1.property(Action.styleProperty)
-    ], Action.prototype, "style", void 0);
+    ], Action.prototype, "style");
     return Action;
 }(card_object_1.CardObject));
 exports.Action = Action;
@@ -3408,10 +3408,10 @@ var SubmitAction = /** @class */ (function (_super) {
     SubmitAction.JsonTypeName = "Action.Submit";
     __decorate([
         serialization_1.property(SubmitAction.dataProperty)
-    ], SubmitAction.prototype, "_originalData", void 0);
+    ], SubmitAction.prototype, "_originalData");
     __decorate([
         serialization_1.property(Action.ignoreInputValidationProperty)
-    ], SubmitAction.prototype, "_ignoreInputValidation", void 0);
+    ], SubmitAction.prototype, "_ignoreInputValidation");
     return SubmitAction;
 }(Action));
 exports.SubmitAction = SubmitAction;
@@ -3489,10 +3489,10 @@ var SubmitQueryAction = /** @class */ (function (_super) {
     SubmitQueryAction.JsonTypeName = "Action.SubmitQuery";
     __decorate([
         serialization_1.property(SubmitQueryAction.dataProperty)
-    ], SubmitQueryAction.prototype, "_originalData", void 0);
+    ], SubmitQueryAction.prototype, "_originalData");
     __decorate([
         serialization_1.property(Action.ignoreInputValidationProperty)
-    ], SubmitQueryAction.prototype, "_ignoreInputValidation", void 0);
+    ], SubmitQueryAction.prototype, "_ignoreInputValidation");
     return SubmitQueryAction;
 }(Action));
 exports.SubmitQueryAction = SubmitQueryAction;
@@ -3524,7 +3524,7 @@ var OpenUrlAction = /** @class */ (function (_super) {
     OpenUrlAction.JsonTypeName = "Action.OpenUrl";
     __decorate([
         serialization_1.property(OpenUrlAction.urlProperty)
-    ], OpenUrlAction.prototype, "url", void 0);
+    ], OpenUrlAction.prototype, "url");
     return OpenUrlAction;
 }(Action));
 exports.OpenUrlAction = OpenUrlAction;
@@ -3622,7 +3622,7 @@ var ToggleVisibilityAction = /** @class */ (function (_super) {
     ToggleVisibilityAction.JsonTypeName = "Action.ToggleVisibility";
     __decorate([
         serialization_1.property(ToggleVisibilityAction.targetElementsProperty)
-    ], ToggleVisibilityAction.prototype, "targetElements", void 0);
+    ], ToggleVisibilityAction.prototype, "targetElements");
     return ToggleVisibilityAction;
 }(Action));
 exports.ToggleVisibilityAction = ToggleVisibilityAction;
@@ -3679,10 +3679,10 @@ var HttpHeader = /** @class */ (function (_super) {
     HttpHeader.valueProperty = new StringWithSubstitutionProperty(serialization_1.Versions.v1_0, "value");
     __decorate([
         serialization_1.property(HttpHeader.nameProperty)
-    ], HttpHeader.prototype, "name", void 0);
+    ], HttpHeader.prototype, "name");
     __decorate([
         serialization_1.property(HttpHeader.valueProperty)
-    ], HttpHeader.prototype, "_value", void 0);
+    ], HttpHeader.prototype, "_value");
     return HttpHeader;
 }(serialization_1.SerializableObject));
 exports.HttpHeader = HttpHeader;
@@ -3781,19 +3781,19 @@ var HttpAction = /** @class */ (function (_super) {
     HttpAction.JsonTypeName = "Action.Http";
     __decorate([
         serialization_1.property(HttpAction.urlProperty)
-    ], HttpAction.prototype, "_url", void 0);
+    ], HttpAction.prototype, "_url");
     __decorate([
         serialization_1.property(HttpAction.bodyProperty)
-    ], HttpAction.prototype, "_body", void 0);
+    ], HttpAction.prototype, "_body");
     __decorate([
         serialization_1.property(HttpAction.methodProperty)
-    ], HttpAction.prototype, "method", void 0);
+    ], HttpAction.prototype, "method");
     __decorate([
         serialization_1.property(HttpAction.headersProperty)
-    ], HttpAction.prototype, "headers", void 0);
+    ], HttpAction.prototype, "headers");
     __decorate([
         serialization_1.property(Action.ignoreInputValidationProperty)
-    ], HttpAction.prototype, "_ignoreInputValidation", void 0);
+    ], HttpAction.prototype, "_ignoreInputValidation");
     return HttpAction;
 }(Action));
 exports.HttpAction = HttpAction;
@@ -4307,7 +4307,7 @@ var ActionSet = /** @class */ (function (_super) {
     ActionSet.orientationProperty = new serialization_1.EnumProperty(serialization_1.Versions.v1_1, "orientation", Enums.Orientation);
     __decorate([
         serialization_1.property(ActionSet.orientationProperty)
-    ], ActionSet.prototype, "orientation", void 0);
+    ], ActionSet.prototype, "orientation");
     return ActionSet;
 }(CardElement));
 exports.ActionSet = ActionSet;
@@ -4475,13 +4475,13 @@ var StylableCardElementContainer = /** @class */ (function (_super) {
     StylableCardElementContainer.minHeightProperty = new serialization_1.PixelSizeProperty(serialization_1.Versions.v1_2, "minHeight");
     __decorate([
         serialization_1.property(StylableCardElementContainer.styleProperty)
-    ], StylableCardElementContainer.prototype, "style", null);
+    ], StylableCardElementContainer.prototype, "style");
     __decorate([
         serialization_1.property(StylableCardElementContainer.bleedProperty)
-    ], StylableCardElementContainer.prototype, "_bleed", void 0);
+    ], StylableCardElementContainer.prototype, "_bleed");
     __decorate([
         serialization_1.property(StylableCardElementContainer.minHeightProperty)
-    ], StylableCardElementContainer.prototype, "minPixelHeight", void 0);
+    ], StylableCardElementContainer.prototype, "minPixelHeight");
     return StylableCardElementContainer;
 }(CardElementContainer));
 exports.StylableCardElementContainer = StylableCardElementContainer;
@@ -4550,16 +4550,16 @@ var BackgroundImage = /** @class */ (function (_super) {
     BackgroundImage.verticalAlignmentProperty = new serialization_1.EnumProperty(serialization_1.Versions.v1_2, "verticalAlignment", Enums.VerticalAlignment, Enums.VerticalAlignment.Top);
     __decorate([
         serialization_1.property(BackgroundImage.urlProperty)
-    ], BackgroundImage.prototype, "url", void 0);
+    ], BackgroundImage.prototype, "url");
     __decorate([
         serialization_1.property(BackgroundImage.fillModeProperty)
-    ], BackgroundImage.prototype, "fillMode", void 0);
+    ], BackgroundImage.prototype, "fillMode");
     __decorate([
         serialization_1.property(BackgroundImage.horizontalAlignmentProperty)
-    ], BackgroundImage.prototype, "horizontalAlignment", void 0);
+    ], BackgroundImage.prototype, "horizontalAlignment");
     __decorate([
         serialization_1.property(BackgroundImage.verticalAlignmentProperty)
-    ], BackgroundImage.prototype, "verticalAlignment", void 0);
+    ], BackgroundImage.prototype, "verticalAlignment");
     return BackgroundImage;
 }(serialization_1.SerializableObject));
 exports.BackgroundImage = BackgroundImage;
@@ -4897,13 +4897,13 @@ var Container = /** @class */ (function (_super) {
     Container.rtlProperty = new serialization_1.BoolProperty(serialization_1.Versions.v1_0, "rtl");
     __decorate([
         serialization_1.property(Container.backgroundImageProperty)
-    ], Container.prototype, "backgroundImage", null);
+    ], Container.prototype, "backgroundImage");
     __decorate([
         serialization_1.property(Container.verticalContentAlignmentProperty)
-    ], Container.prototype, "verticalContentAlignment", void 0);
+    ], Container.prototype, "verticalContentAlignment");
     __decorate([
         serialization_1.property(Container.rtlProperty)
-    ], Container.prototype, "rtl", void 0);
+    ], Container.prototype, "rtl");
     return Container;
 }(StylableCardElementContainer));
 exports.Container = Container;
@@ -5023,130 +5023,10 @@ var Column = /** @class */ (function (_super) {
     }, "stretch");
     __decorate([
         serialization_1.property(Column.widthProperty)
-    ], Column.prototype, "width", void 0);
+    ], Column.prototype, "width");
     return Column;
 }(Container));
 exports.Column = Column;
-var CarouselItem = /** @class */ (function (_super) {
-    __extends(CarouselItem, _super);
-    function CarouselItem(width) {
-        if (width === void 0) { width = "stretch"; }
-        var _this = _super.call(this) || this;
-        _this.width = "stretch";
-        //#endregion
-        _this._computedWeight = 0;
-        _this.width = width;
-        return _this;
-    }
-    CarouselItem.prototype.adjustRenderedElementSize = function (renderedElement) {
-        var minDesignTimeColumnHeight = 20;
-        if (this.isDesignMode()) {
-            renderedElement.style.minWidth = "20px";
-            renderedElement.style.minHeight = (!this.minPixelHeight ? minDesignTimeColumnHeight : Math.max(this.minPixelHeight, minDesignTimeColumnHeight)) + "px";
-        }
-        else {
-            renderedElement.style.minWidth = "100%";
-            if (this.minPixelHeight) {
-                renderedElement.style.minHeight = this.minPixelHeight + "px";
-            }
-        }
-        if (this.width === "auto") {
-            renderedElement.style.flex = "0 1 auto";
-        }
-        else if (this.width === "stretch") {
-            renderedElement.style.flex = "1 1 50px";
-        }
-        else if (this.width instanceof shared_1.SizeAndUnit) {
-            if (this.width.unit == Enums.SizeUnit.Pixel) {
-                renderedElement.style.flex = "0 0 auto";
-                renderedElement.style.width = this.width.physicalSize + "px";
-            }
-            else {
-                renderedElement.style.flex = "1 1 " + (this._computedWeight > 0 ? this._computedWeight : this.width.physicalSize) + "%";
-            }
-        }
-    };
-    CarouselItem.prototype.shouldSerialize = function (context) {
-        return true;
-    };
-    Object.defineProperty(CarouselItem.prototype, "separatorOrientation", {
-        get: function () {
-            return Enums.Orientation.Vertical;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    CarouselItem.prototype.getJsonTypeName = function () {
-        return "CarouselItem";
-    };
-    Object.defineProperty(CarouselItem.prototype, "hasVisibleSeparator", {
-        get: function () {
-            if (this.parent && this.parent instanceof Carousel) {
-                return this.separatorElement !== undefined && !this.parent.isLeftMostElement(this);
-            }
-            else {
-                return false;
-            }
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(CarouselItem.prototype, "isStandalone", {
-        get: function () {
-            return false;
-        },
-        enumerable: false,
-        configurable: true
-    });
-    //#region Schema
-    CarouselItem.widthProperty = new serialization_1.CustomProperty(serialization_1.Versions.v1_0, "width", function (sender, property, source, context) {
-        var result = property.defaultValue;
-        var value = source[property.name];
-        var invalidWidth = false;
-        if (typeof value === "number" && !isNaN(value)) {
-            result = new shared_1.SizeAndUnit(value, Enums.SizeUnit.Weight);
-        }
-        else if (value === "auto" || value === "stretch") {
-            result = value;
-        }
-        else if (typeof value === "string") {
-            try {
-                result = shared_1.SizeAndUnit.parse(value);
-                if (result.unit === Enums.SizeUnit.Pixel && property.targetVersion.compareTo(context.targetVersion) > 0) {
-                    invalidWidth = true;
-                }
-            }
-            catch (e) {
-                invalidWidth = true;
-            }
-        }
-        else {
-            invalidWidth = true;
-        }
-        if (invalidWidth) {
-            context.logParseEvent(sender, Enums.ValidationEvent.InvalidPropertyValue, strings_1.Strings.errors.invalidCarouselItemWidth(value));
-            result = "auto";
-        }
-        return result;
-    }, function (sender, property, target, value, context) {
-        if (value instanceof shared_1.SizeAndUnit) {
-            if (value.unit === Enums.SizeUnit.Pixel) {
-                context.serializeValue(target, "width", value.physicalSize + "px");
-            }
-            else {
-                context.serializeNumber(target, "width", value.physicalSize);
-            }
-        }
-        else {
-            context.serializeValue(target, "width", value);
-        }
-    }, "stretch");
-    __decorate([
-        serialization_1.property(Column.widthProperty)
-    ], CarouselItem.prototype, "width", void 0);
-    return CarouselItem;
-}(Container));
-exports.CarouselItem = CarouselItem;
 var ColumnSet = /** @class */ (function (_super) {
     __extends(ColumnSet, _super);
     function ColumnSet() {
@@ -5418,390 +5298,124 @@ var ColumnSet = /** @class */ (function (_super) {
 exports.ColumnSet = ColumnSet;
 var Carousel = /** @class */ (function (_super) {
     __extends(Carousel, _super);
-    function Carousel() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this._carouselitems = [];
+    function Carousel(width) {
+        if (width === void 0) { width = "stretch"; }
+        var _this = _super.call(this) || this;
+        _this.width = "stretch";
+        //#endregion
+        _this._computedWeight = 0;
+        _this.width = width;
         return _this;
     }
-    Carousel.prototype.createCarouselItemInstance = function (source, context) {
-        return context.parseCardObject(this, source, [], // Forbidden types not supported for elements for now
-        !this.isDesignMode(), function (typeName) {
-            return !typeName || typeName === "CarouselItem" ? new CarouselItem() : undefined;
-        }, function (typeName, errorType) {
-            context.logParseEvent(undefined, Enums.ValidationEvent.ElementTypeNotAllowed, strings_1.Strings.errors.elementTypeNotAllowed(typeName));
-        });
-    };
-    Carousel.prototype.internalRender = function () {
-        this._renderedCarouselItems = [];
-        if (this._carouselitems.length > 0) {
-            // Cache hostConfig to avoid walking the parent hierarchy several times
-            var hostConfig = this.hostConfig;
-            var element = document.createElement("div");
-            element.className = hostConfig.makeCssClassName("ac-carousel");
-            element.style.display = "flex";
-            element.style.overflow = "hidden";
-            var prev = document.createElement("div");
-            prev.className = hostConfig.makeCssClassName("arrows prev");
-            var next = document.createElement("div");
-            next.className = hostConfig.makeCssClassName("arrows next");
-            element.appendChild(prev);
-            element.appendChild(next);
-            if (shared_1.GlobalSettings.useAdvancedCardBottomTruncation) {
-                // See comment in Container.internalRender()
-                element.style.minHeight = '-webkit-min-content';
-            }
-            switch (this.horizontalAlignment) {
-                case Enums.HorizontalAlignment.Center:
-                    element.style.justifyContent = "center";
-                    break;
-                case Enums.HorizontalAlignment.Right:
-                    element.style.justifyContent = "flex-end";
-                    break;
-                default:
-                    element.style.justifyContent = "flex-start";
-                    break;
-            }
-            var totalWeight = 0;
-            for (var _i = 0, _a = this._carouselitems; _i < _a.length; _i++) {
-                var carouselitem = _a[_i];
-                if (carouselitem.width instanceof shared_1.SizeAndUnit && (carouselitem.width.unit == Enums.SizeUnit.Weight)) {
-                    totalWeight += carouselitem.width.physicalSize;
-                }
-            }
-            for (var _b = 0, _c = this._carouselitems; _b < _c.length; _b++) {
-                var carouselitem = _c[_b];
-                if (carouselitem.width instanceof shared_1.SizeAndUnit && carouselitem.width.unit == Enums.SizeUnit.Weight && totalWeight > 0) {
-                    var computedWeight = 100 / totalWeight * carouselitem.width.physicalSize;
-                    // Best way to emulate "internal" access I know of
-                    carouselitem["_computedWeight"] = computedWeight;
-                }
-                var renderedCarouselItem = carouselitem.render();
-                if (renderedCarouselItem) {
-                    if (this._renderedCarouselItems.length > 0 && carouselitem.separatorElement) {
-                        carouselitem.separatorElement.style.flex = "0 0 auto";
-                        Utils.appendChild(element, carouselitem.separatorElement);
-                    }
-                    Utils.appendChild(element, renderedCarouselItem);
-                    this._renderedCarouselItems.push(carouselitem);
-                }
-            }
-            return this._renderedCarouselItems.length > 0 ? element : undefined;
+    Carousel.prototype.adjustRenderedElementSize = function (renderedElement) {
+        var minDesignTimeCarouselHeight = 20;
+        if (this.isDesignMode()) {
+            renderedElement.style.minWidth = "20px";
+            renderedElement.style.minHeight = (!this.minPixelHeight ? minDesignTimeCarouselHeight : Math.max(this.minPixelHeight, minDesignTimeCarouselHeight)) + "px";
         }
         else {
-            return undefined;
+            renderedElement.style.minWidth = "0";
+            if (this.minPixelHeight) {
+                renderedElement.style.minHeight = this.minPixelHeight + "px";
+            }
+        }
+        if (this.width === "auto") {
+            renderedElement.style.flex = "0 1 auto";
+        }
+        else if (this.width === "stretch") {
+            renderedElement.style.flex = "1 1 50px";
+        }
+        else if (this.width instanceof shared_1.SizeAndUnit) {
+            if (this.width.unit == Enums.SizeUnit.Pixel) {
+                renderedElement.style.flex = "0 0 auto";
+                renderedElement.style.width = this.width.physicalSize + "px";
+            }
+            else {
+                renderedElement.style.flex = "1 1 " + (this._computedWeight > 0 ? this._computedWeight : this.width.physicalSize) + "%";
+            }
         }
     };
-    Carousel.prototype.truncateOverflow = function (maxHeight) {
-        for (var _i = 0, _a = this._carouselitems; _i < _a.length; _i++) {
-            var carouselitem = _a[_i];
-            carouselitem['handleOverflow'](maxHeight);
-        }
+    Carousel.prototype.shouldSerialize = function (context) {
         return true;
     };
-    Carousel.prototype.undoOverflowTruncation = function () {
-        for (var _i = 0, _a = this._carouselitems; _i < _a.length; _i++) {
-            var carouselitem = _a[_i];
-            carouselitem['resetOverflow']();
-        }
-    };
-    Object.defineProperty(Carousel.prototype, "isSelectable", {
+    Object.defineProperty(Carousel.prototype, "separatorOrientation", {
         get: function () {
-            return true;
+            return Enums.Orientation.Vertical;
         },
         enumerable: false,
         configurable: true
     });
-    Carousel.prototype.internalParse = function (source, context) {
-        _super.prototype.internalParse.call(this, source, context);
-        this._carouselitems = [];
-        this._renderedCarouselItems = [];
-        var jsonCarouselItems = source["carouselitems"];
-        if (Array.isArray(jsonCarouselItems)) {
-            for (var _i = 0, jsonCarouselItems_1 = jsonCarouselItems; _i < jsonCarouselItems_1.length; _i++) {
-                var item = jsonCarouselItems_1[_i];
-                var carouselitem = this.createCarouselItemInstance(item, context);
-                if (carouselitem) {
-                    this._carouselitems.push(carouselitem);
-                }
-            }
-        }
-    };
-    Carousel.prototype.internalToJSON = function (target, context) {
-        _super.prototype.internalToJSON.call(this, target, context);
-        context.serializeArray(target, "carouselitems", this._carouselitems);
-    };
-    Carousel.prototype.isFirstElement = function (element) {
-        for (var _i = 0, _a = this._carouselitems; _i < _a.length; _i++) {
-            var carouselitem = _a[_i];
-            if (carouselitem.isVisible) {
-                return carouselitem == element;
-            }
-        }
-        return false;
-    };
-    Carousel.prototype.isBleedingAtTop = function () {
-        if (this.isBleeding()) {
-            return true;
-        }
-        if (this._renderedCarouselItems && this._renderedCarouselItems.length > 0) {
-            for (var _i = 0, _a = this._carouselitems; _i < _a.length; _i++) {
-                var carouselitem = _a[_i];
-                if (carouselitem.isBleedingAtTop()) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    };
-    Carousel.prototype.isBleedingAtBottom = function () {
-        if (this.isBleeding()) {
-            return true;
-        }
-        if (this._renderedCarouselItems && this._renderedCarouselItems.length > 0) {
-            for (var _i = 0, _a = this._carouselitems; _i < _a.length; _i++) {
-                var carouselitem = _a[_i];
-                if (carouselitem.isBleedingAtBottom()) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    };
-    Carousel.prototype.getItemCount = function () {
-        return this._carouselitems.length;
-    };
-    Carousel.prototype.getFirstVisibleRenderedItem = function () {
-        if (this.renderedElement && this._renderedCarouselItems && this._renderedCarouselItems.length > 0) {
-            return this._renderedCarouselItems[0];
-        }
-        else {
-            return undefined;
-        }
-    };
-    Carousel.prototype.getLastVisibleRenderedItem = function () {
-        if (this.renderedElement && this._renderedCarouselItems && this._renderedCarouselItems.length > 0) {
-            return this._renderedCarouselItems[this._renderedCarouselItems.length - 1];
-        }
-        else {
-            return undefined;
-        }
-    };
-    Carousel.prototype.getCarouselItemAt = function (index) {
-        return this._carouselitems[index];
-    };
-    Carousel.prototype.getItemAt = function (index) {
-        return this.getCarouselItemAt(index);
-    };
     Carousel.prototype.getJsonTypeName = function () {
         return "Carousel";
     };
-    Carousel.prototype.internalValidateProperties = function (context) {
-        _super.prototype.internalValidateProperties.call(this, context);
-        var weightedCarouselItems = 0;
-        var stretchedCarouselItems = 0;
-        for (var _i = 0, _a = this._carouselitems; _i < _a.length; _i++) {
-            var carouselitem = _a[_i];
-            if (typeof carouselitem.width === "number") {
-                weightedCarouselItems++;
+    Object.defineProperty(Carousel.prototype, "hasVisibleSeparator", {
+        get: function () {
+            if (this.parent && this.parent instanceof ColumnSet) {
+                return this.separatorElement !== undefined && !this.parent.isLeftMostElement(this);
             }
-            else if (carouselitem.width === "stretch") {
-                stretchedCarouselItems++;
+            else {
+                return false;
             }
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Carousel.prototype, "isStandalone", {
+        get: function () {
+            return false;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    //#region Schema
+    Carousel.widthProperty = new serialization_1.CustomProperty(serialization_1.Versions.v1_0, "width", function (sender, property, source, context) {
+        var result = property.defaultValue;
+        var value = source[property.name];
+        var invalidWidth = false;
+        if (typeof value === "number" && !isNaN(value)) {
+            result = new shared_1.SizeAndUnit(value, Enums.SizeUnit.Weight);
         }
-        if (weightedCarouselItems > 0 && stretchedCarouselItems > 0) {
-            context.addFailure(this, Enums.ValidationEvent.Hint, strings_1.Strings.hints.dontUseWeightedAndStrecthedCarouselItemsInSameSet());
+        else if (value === "auto" || value === "stretch") {
+            result = value;
         }
-    };
-    Carousel.prototype.addCarouselItem = function (carouselitem) {
-        if (!carouselitem.parent) {
-            this._carouselitems.push(carouselitem);
-            carouselitem.setParent(this);
+        else if (typeof value === "string") {
+            try {
+                result = shared_1.SizeAndUnit.parse(value);
+                if (result.unit === Enums.SizeUnit.Pixel && property.targetVersion.compareTo(context.targetVersion) > 0) {
+                    invalidWidth = true;
+                }
+            }
+            catch (e) {
+                invalidWidth = true;
+            }
         }
         else {
-            throw new Error(strings_1.Strings.errors.carouselItemAlreadyBelongsToAnotherSet());
+            invalidWidth = true;
         }
-    };
-    Carousel.prototype.removeItem = function (item) {
-        if (item instanceof CarouselItem) {
-            var itemIndex = this._carouselitems.indexOf(item);
-            if (itemIndex >= 0) {
-                this._carouselitems.splice(itemIndex, 1);
-                item.setParent(undefined);
-                this.updateLayout();
-                return true;
-            }
-        }
-        return false;
-    };
-    Carousel.prototype.indexOf = function (cardElement) {
-        return cardElement instanceof CarouselItem ? this._carouselitems.indexOf(cardElement) : -1;
-    };
-    Carousel.prototype.isLeftMostElement = function (element) {
-        return this._carouselitems.indexOf(element) == 0;
-    };
-    Carousel.prototype.isRightMostElement = function (element) {
-        return this._carouselitems.indexOf(element) == this._carouselitems.length - 1;
-    };
-    Carousel.prototype.isTopElement = function (element) {
-        return this._carouselitems.indexOf(element) >= 0;
-    };
-    Carousel.prototype.isBottomElement = function (element) {
-        return this._carouselitems.indexOf(element) >= 0;
-    };
-    Carousel.prototype.getActionById = function (id) {
-        var result = undefined;
-        for (var _i = 0, _a = this._carouselitems; _i < _a.length; _i++) {
-            var carouselitem = _a[_i];
-            result = carouselitem.getActionById(id);
-            if (result) {
-                break;
-            }
+        if (invalidWidth) {
+            context.logParseEvent(sender, Enums.ValidationEvent.InvalidPropertyValue, strings_1.Strings.errors.invalidCarouselWidth(value));
+            result = "auto";
         }
         return result;
-    };
-    Object.defineProperty(Carousel.prototype, "bleed", {
-        get: function () {
-            return this.getBleed();
-        },
-        set: function (value) {
-            this.setBleed(value);
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(Carousel.prototype, "padding", {
-        get: function () {
-            return this.getPadding();
-        },
-        set: function (value) {
-            this.setPadding(value);
-        },
-        enumerable: false,
-        configurable: true
-    });
-    Object.defineProperty(Carousel.prototype, "selectAction", {
-        get: function () {
-            return this._selectAction;
-        },
-        set: function (value) {
-            this._selectAction = value;
-        },
-        enumerable: false,
-        configurable: true
-    });
+    }, function (sender, property, target, value, context) {
+        if (value instanceof shared_1.SizeAndUnit) {
+            if (value.unit === Enums.SizeUnit.Pixel) {
+                context.serializeValue(target, "width", value.physicalSize + "px");
+            }
+            else {
+                context.serializeNumber(target, "width", value.physicalSize);
+            }
+        }
+        else {
+            context.serializeValue(target, "width", value);
+        }
+    }, "stretch");
+    __decorate([
+        serialization_1.property(Carousel.widthProperty)
+    ], Carousel.prototype, "width");
     return Carousel;
-}(StylableCardElementContainer));
+}(Container));
 exports.Carousel = Carousel;
-//export type CarouselWidth = SizeAndUnit | "auto" | "stretch";
-// export class Carousel extends Container {
-//     //#region Schema
-//     static readonly widthProperty = new CustomProperty<CarouselWidth>(
-//         Versions.v1_0,
-//         "width",
-//         (sender: SerializableObject, property: PropertyDefinition, source: PropertyBag, context: BaseSerializationContext) => {
-//             let result: CarouselWidth = property.defaultValue;
-//             let value = source[property.name];
-//             let invalidWidth = false;
-//             if (typeof value === "number" && !isNaN(value)) {
-//                 result = new SizeAndUnit(value, Enums.SizeUnit.Weight);
-//             }
-//             else if (value === "auto" || value === "stretch") {
-//                 result = value;
-//             }
-//             else if (typeof value === "string") {
-//                 try {
-//                     result = SizeAndUnit.parse(value);
-//                     if (result.unit === Enums.SizeUnit.Pixel && property.targetVersion.compareTo(context.targetVersion) > 0) {
-//                         invalidWidth = true;
-//                     }
-//                 }
-//                 catch (e) {
-//                     invalidWidth = true;
-//                 }
-//             }
-//             else {
-//                 invalidWidth = true;
-//             }
-//             if (invalidWidth) {
-//                 context.logParseEvent(
-//                     sender,
-//                     Enums.ValidationEvent.InvalidPropertyValue,
-//                     Strings.errors.invalidCarouselWidth(value));
-//                 result = "auto";
-//             }
-//             return result;
-//         },
-//         (sender: SerializableObject, property: PropertyDefinition, target: PropertyBag, value: CarouselWidth, context: BaseSerializationContext) => {
-//             if (value instanceof SizeAndUnit) {
-//                 if (value.unit === Enums.SizeUnit.Pixel) {
-//                     context.serializeValue(target, "width", value.physicalSize + "px");
-//                 }
-//                 else {
-//                     context.serializeNumber(target, "width", value.physicalSize);
-//                 }
-//             }
-//             else {
-//                 context.serializeValue(target, "width", value);
-//             }
-//         },
-//         "stretch");
-//     @property(Carousel.widthProperty)
-//     width: CarouselWidth = "stretch";
-//     //#endregion
-//     private _computedWeight: number = 0;
-//     protected adjustRenderedElementSize(renderedElement: HTMLElement) {
-//         const minDesignTimeCarouselHeight = 20;
-//         if (this.isDesignMode()) {
-//             renderedElement.style.minWidth = "20px";
-//             renderedElement.style.minHeight = (!this.minPixelHeight ? minDesignTimeCarouselHeight : Math.max(this.minPixelHeight, minDesignTimeCarouselHeight)) + "px";
-//         }
-//         else {
-//             renderedElement.style.minWidth = "0";
-//             if (this.minPixelHeight) {
-//                 renderedElement.style.minHeight = this.minPixelHeight + "px";
-//             }
-//         }
-//         if (this.width === "auto") {
-//             renderedElement.style.flex = "0 1 auto";
-//         }
-//         else if (this.width === "stretch") {
-//             renderedElement.style.flex = "1 1 50px";
-//         }
-//         else if (this.width instanceof SizeAndUnit) {
-//             if (this.width.unit == Enums.SizeUnit.Pixel) {
-//                 renderedElement.style.flex = "0 0 auto";
-//                 renderedElement.style.width = this.width.physicalSize + "px";
-//             }
-//             else {
-//                 renderedElement.style.flex = "1 1 " + (this._computedWeight > 0 ? this._computedWeight : this.width.physicalSize) + "%";
-//             }
-//         }
-//     }
-//     protected shouldSerialize(context: SerializationContext): boolean {
-//         return true;
-//     }
-//     protected get separatorOrientation(): Enums.Orientation {
-//         return Enums.Orientation.Vertical;
-//     }
-//     constructor(width: CarouselWidth = "stretch") {
-//         super();
-//         this.width = width;
-//     }
-//     getJsonTypeName(): string {
-//         return "Carousel";
-//     }
-//     get hasVisibleSeparator(): boolean {
-//         if (this.parent && this.parent instanceof ColumnSet) {
-//             return this.separatorElement !== undefined && !this.parent.isLeftMostElement(this);
-//         }
-//         else {
-//             return false;
-//         }
-//     }
-//     get isStandalone(): boolean {
-//         return false;
-//     }
-// }
 function raiseImageLoadedEvent(image) {
     var card = image.getRootElement();
     var onImageLoadedHandler = (card && card.onImageLoaded) ? card.onImageLoaded : GenietalkCard.onImageLoaded;
@@ -6172,13 +5786,13 @@ var GenietalkCard = /** @class */ (function (_super) {
     GenietalkCard.speakProperty = new serialization_1.StringProperty(serialization_1.Versions.v1_0, "speak");
     __decorate([
         serialization_1.property(GenietalkCard.versionProperty)
-    ], GenietalkCard.prototype, "version", void 0);
+    ], GenietalkCard.prototype, "version");
     __decorate([
         serialization_1.property(GenietalkCard.fallbackTextProperty)
-    ], GenietalkCard.prototype, "fallbackText", void 0);
+    ], GenietalkCard.prototype, "fallbackText");
     __decorate([
         serialization_1.property(GenietalkCard.speakProperty)
-    ], GenietalkCard.prototype, "speak", void 0);
+    ], GenietalkCard.prototype, "speak");
     return GenietalkCard;
 }(ContainerWithActions));
 exports.GenietalkCard = GenietalkCard;
@@ -6382,4 +5996,3 @@ var SerializationContext = /** @class */ (function (_super) {
     return SerializationContext;
 }(serialization_1.BaseSerializationContext));
 exports.SerializationContext = SerializationContext;
-//# sourceMappingURL=card-elements.js.map

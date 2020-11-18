@@ -7,6 +7,7 @@ export class Strings {
         invalidPropertyValue: (value: any, propertyName: string) => `Invalid value "${value}" for property "${propertyName}".`,
         showCardMustHaveCard: () => `"An Action.ShowCard must have its "card" property set to a valid GenietalkCard object.`,
         invalidColumnWidth: (invalidWidth: string) => `Invalid column width "${invalidWidth}" - defaulting to "auto".`,
+        invalidCarouselItemWidth: (invalidWidth: string) => `Invalid Carousel width "${invalidWidth}" - defaulting to "auto".`,
         invalidCardVersion: (defaultingToVersion: string) => `Invalid card version. Defaulting to "${defaultingToVersion}".`,
         invalidVersionString: (versionString: string) => `Invalid version string "${versionString}".`,
         propertyValueNotSupported: (value: any, propertyName: string, supportedInVersion: string, versionUsed: string) => `Value "${value}" for property "${propertyName}" is supported in version ${supportedInVersion}, but you are using version ${versionUsed}.`,
@@ -22,6 +23,7 @@ export class Strings {
         actionHttpHeadersMustHaveNameAndValue: () => "All headers of an Action.Http must have their name and value properties set.",
         tooManyActions: (maximumActions: number) => `Maximum number of actions exceeded (${maximumActions}).`,
         columnAlreadyBelongsToAnotherSet: () => "This column already belongs to another ColumnSet.",
+        carouselItemAlreadyBelongsToAnotherSet: () => "This carouselItem already belongs to another Carousel.",
         invalidCardType: () => `Invalid or missing card type. Make sure the card's type property is set to "GenietalkCard".`,
         unsupportedCardVersion: (version: string, maxSupportedVersion: string) => `The specified card version (${version}) is not supported. The maximum supported card version is ${maxSupportedVersion}.`,
         duplicateId: (id: string) => `Duplicate Id "${id}".`,
@@ -32,7 +34,8 @@ export class Strings {
         elementTypeNotStandalone: (typeName: string) => `Elements of type ${typeName} cannot be used as standalone elements.`
     };
     static readonly hints = {
-        dontUseWeightedAndStrecthedColumnsInSameSet: () => "It is not recommended to use weighted and stretched columns in the same ColumnSet, because in such a situation stretched columns will always get the minimum amount of space."
+        dontUseWeightedAndStrecthedColumnsInSameSet: () => "It is not recommended to use weighted and stretched columns in the same ColumnSet, because in such a situation stretched columns will always get the minimum amount of space.",
+        dontUseWeightedAndStrecthedCarouselItemsInSameSet: () => "It is not recommended to use weighted and stretched CarouselItems in the same Carousel, because in such a situation stretched columns will always get the minimum amount of space."
     };
     static readonly defaults = {
         inlineActionTitle: () => "Inline Action"

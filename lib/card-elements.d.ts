@@ -738,6 +738,19 @@ export declare class Column extends Container {
     get hasVisibleSeparator(): boolean;
     get isStandalone(): boolean;
 }
+export declare type CarouselItemWidth = SizeAndUnit | "auto" | "stretch";
+export declare class CarouselItem extends Container {
+    static readonly widthProperty: CustomProperty<ColumnWidth>;
+    width: CarouselItemWidth;
+    private _computedWeight;
+    protected adjustRenderedElementSize(renderedElement: HTMLElement): void;
+    protected shouldSerialize(context: SerializationContext): boolean;
+    protected get separatorOrientation(): Enums.Orientation;
+    constructor(width?: CarouselItemWidth);
+    getJsonTypeName(): string;
+    get hasVisibleSeparator(): boolean;
+    get isStandalone(): boolean;
+}
 export declare class ColumnSet extends StylableCardElementContainer {
     private _columns;
     private _renderedColumns;
@@ -759,6 +772,41 @@ export declare class ColumnSet extends StylableCardElementContainer {
     getJsonTypeName(): string;
     internalValidateProperties(context: ValidationResults): void;
     addColumn(column: Column): void;
+    removeItem(item: CardElement): boolean;
+    indexOf(cardElement: CardElement): number;
+    isLeftMostElement(element: CardElement): boolean;
+    isRightMostElement(element: CardElement): boolean;
+    isTopElement(element: CardElement): boolean;
+    isBottomElement(element: CardElement): boolean;
+    getActionById(id: string): Action | undefined;
+    get bleed(): boolean;
+    set bleed(value: boolean);
+    get padding(): PaddingDefinition | undefined;
+    set padding(value: PaddingDefinition | undefined);
+    get selectAction(): Action | undefined;
+    set selectAction(value: Action | undefined);
+}
+export declare class Carousel extends StylableCardElementContainer {
+    private _carouselitems;
+    private _renderedCarouselItems;
+    private createCarouselItemInstance;
+    protected internalRender(): HTMLElement | undefined;
+    protected truncateOverflow(maxHeight: number): boolean;
+    protected undoOverflowTruncation(): void;
+    protected get isSelectable(): boolean;
+    protected internalParse(source: any, context: SerializationContext): void;
+    protected internalToJSON(target: PropertyBag, context: SerializationContext): void;
+    isFirstElement(element: CardElement): boolean;
+    isBleedingAtTop(): boolean;
+    isBleedingAtBottom(): boolean;
+    getItemCount(): number;
+    getFirstVisibleRenderedItem(): CardElement | undefined;
+    getLastVisibleRenderedItem(): CardElement | undefined;
+    getCarouselItemAt(index: number): CarouselItem;
+    getItemAt(index: number): CardElement;
+    getJsonTypeName(): string;
+    internalValidateProperties(context: ValidationResults): void;
+    addCarouselItem(carouselitem: CarouselItem): void;
     removeItem(item: CardElement): boolean;
     indexOf(cardElement: CardElement): number;
     isLeftMostElement(element: CardElement): boolean;
