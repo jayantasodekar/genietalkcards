@@ -42,6 +42,12 @@
 						"title": "GitHub",
 						"url": "https://github.com/Microsoft/GenietalkCards"
 					}
+					,
+					{
+						"type": "Action.SubmitQuery",
+						"title": "SubmitQuery",
+						"query": "hello"
+					}
 				]
 			};
 
@@ -59,6 +65,7 @@
 			// Set the genietalk card's event handlers. onExecuteAction is invoked
 			// whenever an action is clicked in the card
 			genietalkCard.onExecuteAction = function (action) {
+				console.log("action-----------",action.query);
 				alert("Ow!");
 			}
 
@@ -76,7 +83,7 @@
 </head>
 
 <body onload="renderCard()">
-	<h1>Genietalk Cards Example</h1>
+	<h1>Genietalk Cards Example test</h1>
 
 	<p>This example requires a build of the Genietalk Cards library.</p>
 

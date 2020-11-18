@@ -530,6 +530,21 @@ export declare class SubmitAction extends Action {
     get data(): object | undefined;
     set data(value: object | undefined);
 }
+export declare class SubmitQueryAction extends Action {
+    static readonly dataProperty: PropertyDefinition;
+    private _originalData?;
+    private _ignoreInputValidation;
+    static readonly JsonTypeName: "Action.SubmitQuery";
+    private _isPrepared;
+    private _processedData?;
+    protected internalGetReferencedInputs(): Dictionary<Input>;
+    protected internalPrepareForExecution(inputs: Dictionary<Input> | undefined): void;
+    getJsonTypeName(): string;
+    get ignoreInputValidation(): boolean;
+    set ignoreInputValidation(value: boolean);
+    get query(): object | undefined;
+    set query(value: object | undefined);
+}
 export declare class OpenUrlAction extends Action {
     static readonly urlProperty: StringProperty;
     url?: string;

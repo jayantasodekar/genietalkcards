@@ -25,7 +25,7 @@ export interface IShowCardAction extends IAction {
 }
 export interface ISubmitQueryAction extends IAction {
     type: "Action.SubmitQuery";
-    card: IGenietalkCard;
+    query: string;
 }
 export interface ICardElement {
     id?: string;
@@ -145,6 +145,6 @@ export interface IGenietalkCard extends ICardElement {
     version?: IVersion | string;
     backgroundImage?: IBackgroundImage | string;
     body?: (ITextBlock | IImage | IImageSet | IFactSet | IColumnSet | IContainer)[];
-    actions?: (ISubmitAction | IOpenUrlAction | IShowCardAction)[];
+    actions?: (ISubmitAction | IOpenUrlAction | IShowCardAction | ISubmitQueryAction)[];
     speak?: string;
 }

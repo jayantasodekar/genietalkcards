@@ -4013,6 +4013,89 @@ export class SubmitAction extends Action {
     }
 }
 
+export class SubmitQueryAction extends Action {
+    //#region Schema
+
+    static readonly dataProperty = new PropertyDefinition(Versions.v1_0, "query");
+
+    @property(SubmitQueryAction.dataProperty)
+    private _originalData?: PropertyBag;
+
+    @property(Action.ignoreInputValidationProperty)
+    private _ignoreInputValidation: boolean = false;
+
+    //#endregion
+
+    // Note the "weird" way this field is declared is to work around a breaking
+    // change introduced in TS 3.1 wrt d.ts generation. DO NOT CHANGE
+    static readonly JsonTypeName: "Action.SubmitQuery" = "Action.SubmitQuery";
+
+    private _isPrepared: boolean = false;
+    private _processedData?: PropertyBag;
+
+    protected internalGetReferencedInputs(): Dictionary<Input> {
+        let result: Dictionary<Input> = {};
+        let current: CardElement | undefined = this.parent;
+        let inputs: Input[] = [];
+
+        while (current) {
+            inputs = inputs.concat(current.getAllInputs(false));
+
+            current = current.parent;
+        }
+
+        for (let input of inputs) {
+            if (input.id) {
+                result[input.id] = input;
+            }
+        }
+
+        return result;
+    }
+
+    protected internalPrepareForExecution(inputs: Dictionary<Input> | undefined) {
+        if (this._originalData) {
+            this._processedData = JSON.parse(JSON.stringify(this._originalData));
+        }
+        else {
+            this._processedData = {};
+        }
+
+        if (this._processedData && inputs) {
+            for (let key of Object.keys(inputs)) {
+                let input = inputs[key];
+
+                if (input.id) {
+                    this._processedData[input.id] = input.value;
+                }
+            }
+        }
+
+        this._isPrepared = true;
+    }
+
+    getJsonTypeName(): string {
+        return SubmitQueryAction.JsonTypeName;
+    }
+
+    get ignoreInputValidation(): boolean {
+        return this._ignoreInputValidation;
+    }
+
+    set ignoreInputValidation(value: boolean) {
+        this._ignoreInputValidation = value;
+    }
+
+    get query(): object | undefined {
+        return this._isPrepared ? this._processedData : this._originalData;
+    }
+
+    set query(value: object | undefined) {
+        this._originalData = value;
+        this._isPrepared = false;
+    }
+}
+
 export class OpenUrlAction extends Action {
     //#region Schema
 
@@ -6675,6 +6758,7 @@ export class GlobalRegistry {
 
         registry.register(OpenUrlAction.JsonTypeName, OpenUrlAction);
         registry.register(SubmitAction.JsonTypeName, SubmitAction);
+        registry.register(SubmitQueryAction.JsonTypeName, SubmitQueryAction);
         registry.register(ShowCardAction.JsonTypeName, ShowCardAction);
         registry.register(ToggleVisibilityAction.JsonTypeName, ToggleVisibilityAction, Versions.v1_2);
     }
