@@ -5152,7 +5152,7 @@ export abstract class StylableCardElementContainer extends CardElementContainer 
             this.getImmediateSurroundingPadding(padding);
 
             let surroundingPadding = this.hostConfig.paddingDefinitionToSpacingDefinition(padding);
-
+console.log('surroundingPadding',surroundingPadding);
             this.renderedElement.style.marginRight = "-" + surroundingPadding.right + "px";
             this.renderedElement.style.marginLeft = "-" + surroundingPadding.left + "px";
 
@@ -6365,6 +6365,7 @@ export class Carousel extends StylableCardElementContainer {
             let prevcont = document.createElement("div");
             prevcont.style.position= "fixed";
             prevcont.style.width="15px";
+            prevcont.style.marginTop='0.5%';
             let prev = document.createElement("div");
             prev.style.width="12px";
             prev.style.height="12px";
@@ -6379,13 +6380,14 @@ export class Carousel extends StylableCardElementContainer {
                 if(this.parentElement){
                     var x=this.parentElement.scrollLeft;
                     this.parentElement.scrollLeft=x-this.parentElement.offsetWidth-8;
-                    console.log(this.parentElement);
+                    //console.log(this.parentElement);
                 }
             });
             let nextcont = document.createElement("div");
             nextcont.style.position= "fixed";
             nextcont.style.width="15px";
-            nextcont.style.transform= "translateX(80%)";
+            nextcont.style.marginTop='0.5%';
+            nextcont.style.marginLeft='11%';
             let next = document.createElement("div");
             next.style.width="12px";
             next.style.height="12px";
@@ -6399,7 +6401,7 @@ export class Carousel extends StylableCardElementContainer {
                 if(this.parentElement){
                     var x=this.parentElement.scrollLeft;
                     this.parentElement.scrollLeft=x+this.parentElement.offsetWidth+8;
-                    console.log(this.parentElement);
+                    //console.log(this.parentElement);
                 }
             });
             next.className = hostConfig.makeCssClassName("arrows next");
