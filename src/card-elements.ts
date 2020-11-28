@@ -6384,9 +6384,9 @@ export class Carousel extends StylableCardElementContainer {
             prev.style.marginLeft= "0px";
             prev.className = hostConfig.makeCssClassName("arrows prev");
             prevcont.addEventListener("mousedown", function(){
-                if(this.parentElement){
-                    var x=this.parentElement.scrollLeft;
-                    this.parentElement.scrollLeft=x-this.parentElement.offsetWidth-8;
+                if(element){
+                    var x=element.scrollLeft;
+                    element.scrollLeft=x-element.offsetWidth-8;
                     //console.log(this.parentElement);
                 }
             });
@@ -6406,9 +6406,9 @@ export class Carousel extends StylableCardElementContainer {
             next.style.transform= "rotate(-135deg)";
             next.style.marginLeft= "0px";
             nextcont.addEventListener("mousedown", function(){
-                if(this.parentElement){
-                    var x=this.parentElement.scrollLeft;
-                    this.parentElement.scrollLeft=x+this.parentElement.offsetWidth+8;
+                if(element){
+                    var x=element.scrollLeft;
+                    element.scrollLeft=x+element.offsetWidth+8;
                     //console.log(this.parentElement);
                 }
             });
