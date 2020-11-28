@@ -6356,13 +6356,20 @@ export class Carousel extends StylableCardElementContainer {
         if (this._carouselitems.length > 0) {
             // Cache hostConfig to avoid walking the parent hierarchy several times
             let hostConfig = this.hostConfig;
-
+          
             let element = document.createElement("div");
+            let elementwraper = document.createElement("div");
+            elementwraper.className = hostConfig.makeCssClassName("ac-carousel-wrapper");
+            elementwraper.style.display = "flex";
+            //elementwraper.style.overflow="hidden"; 
+            elementwraper.style.position="relative"; 
             element.className = hostConfig.makeCssClassName("ac-carousel");
+            
             element.style.display = "flex";
             element.style.overflow="hidden"; 
             element.style.position="relative"; 
             let prevcont = document.createElement("div");
+            prevcont.className= hostConfig.makeCssClassName("arrowswraper prevcont");
             prevcont.style.position= "fixed";
             prevcont.style.width="15px";
             prevcont.style.marginTop='0.5%';
@@ -6384,6 +6391,7 @@ export class Carousel extends StylableCardElementContainer {
                 }
             });
             let nextcont = document.createElement("div");
+            nextcont.className= hostConfig.makeCssClassName("arrowswraper nextcont");
             nextcont.style.position= "fixed";
             nextcont.style.width="15px";
             nextcont.style.marginTop='0.5%';
@@ -6407,22 +6415,21 @@ export class Carousel extends StylableCardElementContainer {
             next.className = hostConfig.makeCssClassName("arrows next");
             prevcont.appendChild(prev);
             nextcont.appendChild(next);
-            element.appendChild(prevcont);
-            element.appendChild(nextcont);
+            
             if (GlobalSettings.useAdvancedCardBottomTruncation) {
                 // See comment in Container.internalRender()
-                element.style.minHeight = '-webkit-min-content';
+                elementwraper.style.minHeight = '-webkit-min-content';
             }
 
             switch (this.horizontalAlignment) {
                 case Enums.HorizontalAlignment.Center:
-                    element.style.justifyContent = "center";
+                    elementwraper.style.justifyContent = "center";
                     break;
                 case Enums.HorizontalAlignment.Right:
-                    element.style.justifyContent = "flex-end";
+                    elementwraper.style.justifyContent = "flex-end";
                     break;
                 default:
-                    element.style.justifyContent = "flex-start";
+                    elementwraper.style.justifyContent = "flex-start";
                     break;
             }
 
@@ -6443,21 +6450,21 @@ export class Carousel extends StylableCardElementContainer {
                 }
 
                 let renderedCarouselItem = carouselitem.render();
-
                 if (renderedCarouselItem) {
                     if (this._renderedCarouselItems.length > 0 && carouselitem.separatorElement) {
                         carouselitem.separatorElement.style.flex = "0 0 auto";
 
                         Utils.appendChild(element, carouselitem.separatorElement);
                     }
-
                     Utils.appendChild(element, renderedCarouselItem);
-
                     this._renderedCarouselItems.push(carouselitem);
                 }
             }
+            Utils.appendChild(elementwraper, prevcont);
+            Utils.appendChild(elementwraper, element);
+            Utils.appendChild(elementwraper, nextcont);
 
-            return this._renderedCarouselItems.length > 0 ? element : undefined;
+            return this._renderedCarouselItems.length > 0 ? elementwraper : undefined;
         }
         else {
             return undefined;
