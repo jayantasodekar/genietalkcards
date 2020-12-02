@@ -984,7 +984,7 @@ export class TextBlock extends BaseTextBlock {
 
             if (element.firstElementChild instanceof HTMLElement) {
                 let firstElementChild = <HTMLElement>element.firstElementChild;
-                firstElementChild.style.marginTop = "0px";
+                firstElementChild.style.marginTop = "5px";
                 firstElementChild.style.width = "100%";
 
                 if (!this.wrap) {
@@ -2237,6 +2237,7 @@ export class Media extends CardElement {
         posterRootElement.setAttribute("role", "contentinfo");
         posterRootElement.setAttribute("aria-label", this.altText ? this.altText : "Media content");
         posterRootElement.style.position = "relative";
+        posterRootElement.style.alignItems = "center";
         posterRootElement.style.display = "flex";
 
         let posterUrl = this.getPosterUrl();
@@ -6361,6 +6362,7 @@ export class Carousel extends StylableCardElementContainer {
             let elementwraper = document.createElement("div");
             elementwraper.className = hostConfig.makeCssClassName("ac-carousel-wrapper");
             elementwraper.style.display = "flex";
+            elementwraper.style.alignItems="center";
             //elementwraper.style.overflow="hidden"; 
             elementwraper.style.position="relative"; 
             element.className = hostConfig.makeCssClassName("ac-carousel");
@@ -6368,9 +6370,9 @@ export class Carousel extends StylableCardElementContainer {
             element.style.display = "flex";
             element.style.overflow="hidden"; 
             element.style.position="relative"; 
+            element.style.alignItems="center";
             let prevcont = document.createElement("div");
             prevcont.className= hostConfig.makeCssClassName("arrowswraper prevcont");
-            prevcont.style.position= "fixed";
             prevcont.style.width="15px";
             prevcont.style.marginTop='0.5%';
             let prev = document.createElement("div");
@@ -6378,10 +6380,12 @@ export class Carousel extends StylableCardElementContainer {
             prev.style.height="12px";
             prev.style.borderColor= "#000";
             prev.style.marginTop= "0px";
-            prev.style.borderBottom="6px solid";
-            prev.style.borderLeft="6px solid";
+            prev.style.borderBottom="3px solid";
+            prev.style.borderLeft="3px solid";
             prev.style.transform= "rotate(45deg)";
             prev.style.marginLeft= "0px";
+            prev.style.position= "relative";
+            prev.style.top= "50%";
             prev.className = hostConfig.makeCssClassName("arrows prev");
             prevcont.addEventListener("mousedown", function(){
                 if(element){
@@ -6392,7 +6396,7 @@ export class Carousel extends StylableCardElementContainer {
             });
             let nextcont = document.createElement("div");
             nextcont.className= hostConfig.makeCssClassName("arrowswraper nextcont");
-            nextcont.style.position= "fixed";
+            // nextcont.style.position= "fixed";
             nextcont.style.width="15px";
             nextcont.style.marginTop='0.5%';
             nextcont.style.marginLeft='11%';
@@ -6401,10 +6405,12 @@ export class Carousel extends StylableCardElementContainer {
             next.style.height="12px";
             next.style.borderColor= "#000";
             next.style.marginTop= "0px";
-            next.style.borderBottom="6px solid";
-            next.style.borderLeft="6px solid";
+            next.style.borderBottom="3px solid";
+            next.style.borderLeft="3px solid";
             next.style.transform= "rotate(-135deg)";
             next.style.marginLeft= "0px";
+            next.style.position= "relative";
+            next.style.top= "50%";
             nextcont.addEventListener("mousedown", function(){
                 if(element){
                     var x=element.scrollLeft;
