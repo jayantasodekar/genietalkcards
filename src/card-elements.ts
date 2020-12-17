@@ -7240,7 +7240,7 @@ export class GenietalkCard extends ContainerWithActions {
     internalValidateProperties(context: ValidationResults) {
         super.internalValidateProperties(context);
 
-        if (this.getValue(CardElement.typeNameProperty) !== "GenietalkCard") {
+        if (this.getValue(CardElement.typeNameProperty) !== "GenietalkCard" && this.getValue(CardElement.typeNameProperty) !== "AdaptiveCard") {
             context.addFailure(
                 this,
                 Enums.ValidationEvent.MissingCardType,
