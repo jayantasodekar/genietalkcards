@@ -6371,6 +6371,8 @@ export class Carousel extends StylableCardElementContainer {
             element.style.overflow="hidden"; 
             element.style.position="relative"; 
             element.style.alignItems="center";
+            element.style.width="100%";
+            element.style.scrollBehavior="smooth";
             let prevcont = document.createElement("div");
             prevcont.className= hostConfig.makeCssClassName("arrowswraper prevcont");
             prevcont.style.width="15px";
@@ -6386,6 +6388,7 @@ export class Carousel extends StylableCardElementContainer {
             prev.style.marginLeft= "0px";
             prev.style.position= "relative";
             prev.style.top= "50%";
+            prev.style.cursor= "pointer";
             prev.className = hostConfig.makeCssClassName("arrows prev");
             prevcont.addEventListener("mousedown", function(){
                 if(element){
@@ -6411,6 +6414,7 @@ export class Carousel extends StylableCardElementContainer {
             next.style.marginLeft= "0px";
             next.style.position= "relative";
             next.style.top= "50%";
+            next.style.cursor= "pointer";
             nextcont.addEventListener("mousedown", function(){
                 if(element){
                     var x=element.scrollLeft;

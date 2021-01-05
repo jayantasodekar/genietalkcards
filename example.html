@@ -21,365 +21,862 @@
 			// in practice you'll probably get this from a service
 			// see http://genietalkcards.io/samples/ for inspiration
 			var card = {
-				"type": "GenietalkCard",
-				"version": "1.0",
-				"body": [
-				{
-            "type": "Carousel",
-            "displayitemcount":2,
-            "carouselitems": [
-                {
-                    "type": "CarouselItem",
-                    "width": "auto",
-                    "items": [
+      "type": "GenietalkCard",
+      "version": "1.3",
+      "body": [
+            {
+                  "type": "Carousel",
+                  "displayitemcount": 2,
+                  "carouselitems": [
                         {
-                            "type": "Image",
-                            "url": "https://pbs.twimg.com/profile_images/3647943215/d7f12830b3c17a5a9e4afcc370e3a37e_400x400.jpeg",
-                            "size": "small",
-                            "style": "person"
-                        }
-                    ]
-				},{
-                    "type": "CarouselItem",
-                    "width": "stretch",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "Matt Hidinger",
-                            "weight": "bolder",
-                            "wrap": true
+                              "type": "CarouselItem",
+                              "width": "auto",
+                              "items": [
+                                    {
+                                          "type": "Container",
+                                          "PlanAmount": 449,
+                                          "PlanCategory": "truely unlimited",
+                                          "PlanCurrency": "rupees",
+                                          "PlanDurationInDays": 56,
+                                          "items": [
+                                                {
+                                                      "type": "ColumnSet",
+                                                      "columns": [
+                                                            {
+                                                                  "type": "Column",
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Truly Unlimited",
+                                                                              "isSubtle": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "598",
+                                                                              "spacing": "Small",
+                                                                              "weight": "Bolder"
+                                                                        }
+                                                                  ],
+                                                                  "separator": true,
+                                                                  "backgroundImage": {},
+                                                                  "width": 2
+                                                            },
+                                                            {
+                                                                  "type": "Column",
+                                                                  "width": 1,
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Benifits",
+                                                                              "isSubtle": true,
+                                                                              "horizontalAlignment": "Center"
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "2GB/day",
+                                                                              "weight": "Bolder",
+                                                                              "horizontalAlignment": "Center",
+                                                                              "spacing": "Small"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "type": "Column",
+                                                                  "width": 1,
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Validity",
+                                                                              "isSubtle": true,
+                                                                              "horizontalAlignment": "Right"
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "56 days",
+                                                                              "horizontalAlignment": "Right",
+                                                                              "weight": "Bolder",
+                                                                              "spacing": "Small"
+                                                                        }
+                                                                  ]
+                                                            }
+                                                      ],
+                                                      "selectAction": {
+                                                            "type": "Action.Submit",
+                                                            "data": {
+                                                                  "action": "query",
+                                                                  "actiondata": "I am looking to buy rupees 449 plan"
+                                                            }
+                                                      }
+                                                },
+                                                {
+                                                      "type": "ColumnSet",
+                                                      "columns": [
+                                                            {
+                                                                  "type": "Column",
+                                                                  "selectAction": {
+                                                                        "type": "Action.ToggleVisibility",
+                                                                        "targetElements": [
+                                                                              "cardContent1",
+                                                                              "showHistory1",
+                                                                              "hideHistory1"
+                                                                        ]
+                                                                  },
+                                                                  "verticalContentAlignment": "Center",
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "id": "showHistory1",
+                                                                              "horizontalAlignment": "Right",
+                                                                              "color": "Attention",
+                                                                              "text": "Show more",
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "id": "hideHistory1",
+                                                                              "horizontalAlignment": "Right",
+                                                                              "color": "Attention",
+                                                                              "text": "Show less",
+                                                                              "wrap": true,
+                                                                              "isVisible": false
+                                                                        }
+                                                                  ],
+                                                                  "width": 1
+                                                            }
+                                                      ]
+                                                },
+                                                {
+                                                      "type": "Container",
+                                                      "id": "cardContent1",
+                                                      "isVisible": false,
+                                                      "items": [
+                                                            {
+                                                                  "type": "Container",
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Airtel Benifit(s) - Xstream Premium - Free Hellotunes",
+                                                                              "wrap": true,
+                                                                              "isSubtle": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Airtel Xstream Premium**  \nFREE 400+ Live TV Channels, Unlimited Movies and TV Shows",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Free Hellotunes**  \nSet any song as Hello Tune with Unlimited changes",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Wynk Music**  \nEnjoy unlimited music downloads for free",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Free online courses **  \nValidity 1 YEAR Upskill with Shaw Academy",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Get Rs 150 cashback on FASTag **  \nContactless delivery of FASTag",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        }
+                                                                  ]
+                                                            }
+                                                      ]
+                                                }
+                                          ]
+                                    }
+                              ]
                         },
                         {
-                            "type": "TextBlock",
-                            "spacing": "none",
-                            "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
-                            "isSubtle": true,
-                            "wrap": true
-                        }
-                    ]
-                },
-				{
-                    "type": "CarouselItem",
-                    "width": "auto",
-                    "items": [
-                        {
-                            "type": "Image",
-                            "url": "https://pbs.twimg.com/profile_images/3647943215/d7f12830b3c17a5a9e4afcc370e3a37e_400x400.jpeg",
-                            "size": "small",
-                            "style": "person"
-                        }
-                    ]
-				},{
-                    "type": "CarouselItem",
-                    "width": "stretch",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "Matt Hidinger",
-                            "weight": "bolder",
-                            "wrap": true
+                              "type": "CarouselItem",
+                              "width": "auto",
+                              "items": [
+                                    {
+                                          "type": "Container",
+                                          "PlanAmount": 449,
+                                          "PlanCategory": "truely unlimited",
+                                          "PlanCurrency": "rupees",
+                                          "PlanDurationInDays": 56,
+                                          "items": [
+                                                {
+                                                      "type": "ColumnSet",
+                                                      "columns": [
+                                                            {
+                                                                  "type": "Column",
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Truly Unlimited",
+                                                                              "isSubtle": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "399",
+                                                                              "spacing": "Small",
+                                                                              "weight": "Bolder"
+                                                                        }
+                                                                  ],
+                                                                  "separator": true,
+                                                                  "backgroundImage": {},
+                                                                  "width": 2
+                                                            },
+                                                            {
+                                                                  "type": "Column",
+                                                                  "width": 1,
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Benifits",
+                                                                              "isSubtle": true,
+                                                                              "horizontalAlignment": "Center"
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "2GB/day",
+                                                                              "weight": "Bolder",
+                                                                              "horizontalAlignment": "Center",
+                                                                              "spacing": "Small"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "type": "Column",
+                                                                  "width": 1,
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Validity",
+                                                                              "isSubtle": true,
+                                                                              "horizontalAlignment": "Right"
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "56 days",
+                                                                              "horizontalAlignment": "Right",
+                                                                              "weight": "Bolder",
+                                                                              "spacing": "Small"
+                                                                        }
+                                                                  ]
+                                                            }
+                                                      ],
+                                                      "selectAction": {
+                                                            "type": "Action.Submit",
+                                                            "data": {
+                                                                  "action": "query",
+                                                                  "actiondata": "I am looking to buy rupees 449 plan"
+                                                            }
+                                                      }
+                                                },
+                                                {
+                                                      "type": "ColumnSet",
+                                                      "columns": [
+                                                            {
+                                                                  "type": "Column",
+                                                                  "selectAction": {
+                                                                        "type": "Action.ToggleVisibility",
+                                                                        "targetElements": [
+                                                                              "cardContent1",
+                                                                              "showHistory1",
+                                                                              "hideHistory1"
+                                                                        ]
+                                                                  },
+                                                                  "verticalContentAlignment": "Center",
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "id": "showHistory1",
+                                                                              "horizontalAlignment": "Right",
+                                                                              "color": "Attention",
+                                                                              "text": "Show more",
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "id": "hideHistory1",
+                                                                              "horizontalAlignment": "Right",
+                                                                              "color": "Attention",
+                                                                              "text": "Show less",
+                                                                              "wrap": true,
+                                                                              "isVisible": false
+                                                                        }
+                                                                  ],
+                                                                  "width": 1
+                                                            }
+                                                      ]
+                                                },
+                                                {
+                                                      "type": "Container",
+                                                      "id": "cardContent1",
+                                                      "isVisible": false,
+                                                      "items": [
+                                                            {
+                                                                  "type": "Container",
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Airtel Benifit(s) - Xstream Premium - Free Hellotunes",
+                                                                              "wrap": true,
+                                                                              "isSubtle": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Airtel Xstream Premium**  \nFREE 400+ Live TV Channels, Unlimited Movies and TV Shows",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Free Hellotunes**  \nSet any song as Hello Tune with Unlimited changes",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Wynk Music**  \nEnjoy unlimited music downloads for free",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Free online courses **  \nValidity 1 YEAR Upskill with Shaw Academy",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Get Rs 150 cashback on FASTag **  \nContactless delivery of FASTag",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        }
+                                                                  ]
+                                                            }
+                                                      ]
+                                                }
+                                          ]
+                                    }
+                              ]
                         },
                         {
-                            "type": "TextBlock",
-                            "spacing": "none",
-                            "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
-                            "isSubtle": true,
-                            "wrap": true
-                        }
-                    ]
-                },{
-                    "type": "CarouselItem",
-                    "width": "auto",
-                    "items": [
-                        {
-                            "type": "Image",
-                            "url": "https://pbs.twimg.com/profile_images/3647943215/d7f12830b3c17a5a9e4afcc370e3a37e_400x400.jpeg",
-                            "size": "small",
-                            "style": "person"
-                        }
-                    ]
-				},{
-                    "type": "CarouselItem",
-                    "width": "stretch",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "Matt Hidinger",
-                            "weight": "bolder",
-                            "wrap": true
+                              "type": "CarouselItem",
+                              "width": "auto",
+                              "items": [
+                                    {
+                                          "type": "Container",
+                                          "PlanAmount": 449,
+                                          "PlanCategory": "truely unlimited",
+                                          "PlanCurrency": "rupees",
+                                          "PlanDurationInDays": 56,
+                                          "items": [
+                                                {
+                                                      "type": "ColumnSet",
+                                                      "columns": [
+                                                            {
+                                                                  "type": "Column",
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Truly Unlimited",
+                                                                              "isSubtle": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "249",
+                                                                              "spacing": "Small",
+                                                                              "weight": "Bolder"
+                                                                        }
+                                                                  ],
+                                                                  "separator": true,
+                                                                  "backgroundImage": {},
+                                                                  "width": 2
+                                                            },
+                                                            {
+                                                                  "type": "Column",
+                                                                  "width": 1,
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Benifits",
+                                                                              "isSubtle": true,
+                                                                              "horizontalAlignment": "Center"
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "2GB/day",
+                                                                              "weight": "Bolder",
+                                                                              "horizontalAlignment": "Center",
+                                                                              "spacing": "Small"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "type": "Column",
+                                                                  "width": 1,
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Validity",
+                                                                              "isSubtle": true,
+                                                                              "horizontalAlignment": "Right"
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "56 days",
+                                                                              "horizontalAlignment": "Right",
+                                                                              "weight": "Bolder",
+                                                                              "spacing": "Small"
+                                                                        }
+                                                                  ]
+                                                            }
+                                                      ],
+                                                      "selectAction": {
+                                                            "type": "Action.Submit",
+                                                            "data": {
+                                                                  "action": "query",
+                                                                  "actiondata": "I am looking to buy rupees 449 plan"
+                                                            }
+                                                      }
+                                                },
+                                                {
+                                                      "type": "ColumnSet",
+                                                      "columns": [
+                                                            {
+                                                                  "type": "Column",
+                                                                  "selectAction": {
+                                                                        "type": "Action.ToggleVisibility",
+                                                                        "targetElements": [
+                                                                              "cardContent1",
+                                                                              "showHistory1",
+                                                                              "hideHistory1"
+                                                                        ]
+                                                                  },
+                                                                  "verticalContentAlignment": "Center",
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "id": "showHistory1",
+                                                                              "horizontalAlignment": "Right",
+                                                                              "color": "Attention",
+                                                                              "text": "Show more",
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "id": "hideHistory1",
+                                                                              "horizontalAlignment": "Right",
+                                                                              "color": "Attention",
+                                                                              "text": "Show less",
+                                                                              "wrap": true,
+                                                                              "isVisible": false
+                                                                        }
+                                                                  ],
+                                                                  "width": 1
+                                                            }
+                                                      ]
+                                                },
+                                                {
+                                                      "type": "Container",
+                                                      "id": "cardContent1",
+                                                      "isVisible": false,
+                                                      "items": [
+                                                            {
+                                                                  "type": "Container",
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Airtel Benifit(s) - Xstream Premium - Free Hellotunes",
+                                                                              "wrap": true,
+                                                                              "isSubtle": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Airtel Xstream Premium**  \nFREE 400+ Live TV Channels, Unlimited Movies and TV Shows",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Free Hellotunes**  \nSet any song as Hello Tune with Unlimited changes",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Wynk Music**  \nEnjoy unlimited music downloads for free",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Free online courses **  \nValidity 1 YEAR Upskill with Shaw Academy",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Get Rs 150 cashback on FASTag **  \nContactless delivery of FASTag",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        }
+                                                                  ]
+                                                            }
+                                                      ]
+                                                }
+                                          ]
+                                    }
+                              ]
                         },
                         {
-                            "type": "TextBlock",
-                            "spacing": "none",
-                            "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
-                            "isSubtle": true,
-                            "wrap": true
-                        }
-                    ]
-                },{
-                    "type": "CarouselItem",
-                    "width": "auto",
-                    "items": [
-                        {
-                            "type": "Image",
-                            "url": "https://pbs.twimg.com/profile_images/3647943215/d7f12830b3c17a5a9e4afcc370e3a37e_400x400.jpeg",
-                            "size": "small",
-                            "style": "person"
-                        }
-                    ]
-				},
-                
-                {
-                    "type": "CarouselItem",
-                    "width": "stretch",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "Matt Hidinger",
-                            "weight": "bolder",
-                            "wrap": true
+                              "type": "CarouselItem",
+                              "width": "auto",
+                              "items": [
+                                    {
+                                          "type": "Container",
+                                          "PlanAmount": 449,
+                                          "PlanCategory": "truely unlimited",
+                                          "PlanCurrency": "rupees",
+                                          "PlanDurationInDays": 56,
+                                          "items": [
+                                                {
+                                                      "type": "ColumnSet",
+                                                      "columns": [
+                                                            {
+                                                                  "type": "Column",
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Truly Unlimited",
+                                                                              "isSubtle": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "219",
+                                                                              "spacing": "Small",
+                                                                              "weight": "Bolder"
+                                                                        }
+                                                                  ],
+                                                                  "separator": true,
+                                                                  "backgroundImage": {},
+                                                                  "width": 2
+                                                            },
+                                                            {
+                                                                  "type": "Column",
+                                                                  "width": 1,
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Benifits",
+                                                                              "isSubtle": true,
+                                                                              "horizontalAlignment": "Center"
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "2GB/day",
+                                                                              "weight": "Bolder",
+                                                                              "horizontalAlignment": "Center",
+                                                                              "spacing": "Small"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "type": "Column",
+                                                                  "width": 1,
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Validity",
+                                                                              "isSubtle": true,
+                                                                              "horizontalAlignment": "Right"
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "56 days",
+                                                                              "horizontalAlignment": "Right",
+                                                                              "weight": "Bolder",
+                                                                              "spacing": "Small"
+                                                                        }
+                                                                  ]
+                                                            }
+                                                      ],
+                                                      "selectAction": {
+                                                            "type": "Action.Submit",
+                                                            "data": {
+                                                                  "action": "query",
+                                                                  "actiondata": "I am looking to buy rupees 449 plan"
+                                                            }
+                                                      }
+                                                },
+                                                {
+                                                      "type": "ColumnSet",
+                                                      "columns": [
+                                                            {
+                                                                  "type": "Column",
+                                                                  "selectAction": {
+                                                                        "type": "Action.ToggleVisibility",
+                                                                        "targetElements": [
+                                                                              "cardContent1",
+                                                                              "showHistory1",
+                                                                              "hideHistory1"
+                                                                        ]
+                                                                  },
+                                                                  "verticalContentAlignment": "Center",
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "id": "showHistory1",
+                                                                              "horizontalAlignment": "Right",
+                                                                              "color": "Attention",
+                                                                              "text": "Show more",
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "id": "hideHistory1",
+                                                                              "horizontalAlignment": "Right",
+                                                                              "color": "Attention",
+                                                                              "text": "Show less",
+                                                                              "wrap": true,
+                                                                              "isVisible": false
+                                                                        }
+                                                                  ],
+                                                                  "width": 1
+                                                            }
+                                                      ]
+                                                },
+                                                {
+                                                      "type": "Container",
+                                                      "id": "cardContent1",
+                                                      "isVisible": false,
+                                                      "items": [
+                                                            {
+                                                                  "type": "Container",
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Airtel Benifit(s) - Xstream Premium - Free Hellotunes",
+                                                                              "wrap": true,
+                                                                              "isSubtle": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Airtel Xstream Premium**  \nFREE 400+ Live TV Channels, Unlimited Movies and TV Shows",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Free Hellotunes**  \nSet any song as Hello Tune with Unlimited changes",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Wynk Music**  \nEnjoy unlimited music downloads for free",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Free online courses **  \nValidity 1 YEAR Upskill with Shaw Academy",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Get Rs 150 cashback on FASTag **  \nContactless delivery of FASTag",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        }
+                                                                  ]
+                                                            }
+                                                      ]
+                                                }
+                                          ]
+                                    }
+                              ]
                         },
                         {
-                            "type": "TextBlock",
-                            "spacing": "none",
-                            "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
-                            "isSubtle": true,
-                            "wrap": true
+                              "type": "CarouselItem",
+                              "width": "auto",
+                              "items": [
+                                    {
+                                          "type": "Container",
+                                          "PlanAmount": 449,
+                                          "PlanCategory": "truely unlimited",
+                                          "PlanCurrency": "rupees",
+                                          "PlanDurationInDays": 56,
+                                          "items": [
+                                                {
+                                                      "type": "ColumnSet",
+                                                      "columns": [
+                                                            {
+                                                                  "type": "Column",
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Truly Unlimited",
+                                                                              "isSubtle": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "698",
+                                                                              "spacing": "Small",
+                                                                              "weight": "Bolder"
+                                                                        }
+                                                                  ],
+                                                                  "separator": true,
+                                                                  "backgroundImage": {},
+                                                                  "width": 2
+                                                            },
+                                                            {
+                                                                  "type": "Column",
+                                                                  "width": 1,
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Benifits",
+                                                                              "isSubtle": true,
+                                                                              "horizontalAlignment": "Center"
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "2GB/day",
+                                                                              "weight": "Bolder",
+                                                                              "horizontalAlignment": "Center",
+                                                                              "spacing": "Small"
+                                                                        }
+                                                                  ]
+                                                            },
+                                                            {
+                                                                  "type": "Column",
+                                                                  "width": 1,
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Validity",
+                                                                              "isSubtle": true,
+                                                                              "horizontalAlignment": "Right"
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "56 days",
+                                                                              "horizontalAlignment": "Right",
+                                                                              "weight": "Bolder",
+                                                                              "spacing": "Small"
+                                                                        }
+                                                                  ]
+                                                            }
+                                                      ],
+                                                      "selectAction": {
+                                                            "type": "Action.Submit",
+                                                            "data": {
+                                                                  "action": "query",
+                                                                  "actiondata": "I am looking to buy rupees 449 plan"
+                                                            }
+                                                      }
+                                                },
+                                                {
+                                                      "type": "ColumnSet",
+                                                      "columns": [
+                                                            {
+                                                                  "type": "Column",
+                                                                  "selectAction": {
+                                                                        "type": "Action.ToggleVisibility",
+                                                                        "targetElements": [
+                                                                              "cardContent1",
+                                                                              "showHistory1",
+                                                                              "hideHistory1"
+                                                                        ]
+                                                                  },
+                                                                  "verticalContentAlignment": "Center",
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "id": "showHistory1",
+                                                                              "horizontalAlignment": "Right",
+                                                                              "color": "Attention",
+                                                                              "text": "Show more",
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "id": "hideHistory1",
+                                                                              "horizontalAlignment": "Right",
+                                                                              "color": "Attention",
+                                                                              "text": "Show less",
+                                                                              "wrap": true,
+                                                                              "isVisible": false
+                                                                        }
+                                                                  ],
+                                                                  "width": 1
+                                                            }
+                                                      ]
+                                                },
+                                                {
+                                                      "type": "Container",
+                                                      "id": "cardContent1",
+                                                      "isVisible": false,
+                                                      "items": [
+                                                            {
+                                                                  "type": "Container",
+                                                                  "items": [
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "Airtel Benifit(s) - Xstream Premium - Free Hellotunes",
+                                                                              "wrap": true,
+                                                                              "isSubtle": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Airtel Xstream Premium**  \nFREE 400+ Live TV Channels, Unlimited Movies and TV Shows",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Free Hellotunes**  \nSet any song as Hello Tune with Unlimited changes",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Wynk Music**  \nEnjoy unlimited music downloads for free",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Free online courses **  \nValidity 1 YEAR Upskill with Shaw Academy",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        },
+                                                                        {
+                                                                              "type": "TextBlock",
+                                                                              "text": "- **Get Rs 150 cashback on FASTag **  \nContactless delivery of FASTag",
+                                                                              "isSubtle": true,
+                                                                              "wrap": true
+                                                                        }
+                                                                  ]
+                                                            }
+                                                      ]
+                                                }
+                                          ]
+                                    }
+                              ]
                         }
-                    ]
-                },
-                {
-                    "type": "CarouselItem",
-                    "width": "stretch",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "Matt Hidinger",
-                            "weight": "bolder",
-                            "wrap": true
-                        },
-                        {
-                            "type": "TextBlock",
-                            "spacing": "none",
-                            "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
-                            "isSubtle": true,
-                            "wrap": true
-                        }
-                    ]
-                },
-                {
-                    "type": "CarouselItem",
-                    "width": "stretch",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "Matt Hidinger",
-                            "weight": "bolder",
-                            "wrap": true
-                        },
-                        {
-                            "type": "TextBlock",
-                            "spacing": "none",
-                            "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
-                            "isSubtle": true,
-                            "wrap": true
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "type": "Carousel",
-            "displayitemcount":2,
-            "carouselitems": [
-                {
-                    "type": "CarouselItem",
-                    "width": "auto",
-                    "items": [
-                        {
-                            "type": "Image",
-                            "url": "https://pbs.twimg.com/profile_images/3647943215/d7f12830b3c17a5a9e4afcc370e3a37e_400x400.jpeg",
-                            "size": "small",
-                            "style": "person"
-                        }
-                    ]
-				},{
-                    "type": "CarouselItem",
-                    "width": "stretch",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "Matt Hidinger",
-                            "weight": "bolder",
-                            "wrap": true
-                        },
-                        {
-                            "type": "TextBlock",
-                            "spacing": "none",
-                            "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
-                            "isSubtle": true,
-                            "wrap": true
-                        }
-                    ]
-                },
-				{
-                    "type": "CarouselItem",
-                    "width": "auto",
-                    "items": [
-                        {
-                            "type": "Image",
-                            "url": "https://pbs.twimg.com/profile_images/3647943215/d7f12830b3c17a5a9e4afcc370e3a37e_400x400.jpeg",
-                            "size": "small",
-                            "style": "person"
-                        }
-                    ]
-				},{
-                    "type": "CarouselItem",
-                    "width": "stretch",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "Matt Hidinger",
-                            "weight": "bolder",
-                            "wrap": true
-                        },
-                        {
-                            "type": "TextBlock",
-                            "spacing": "none",
-                            "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
-                            "isSubtle": true,
-                            "wrap": true
-                        }
-                    ]
-                },{
-                    "type": "CarouselItem",
-                    "width": "auto",
-                    "items": [
-                        {
-                            "type": "Image",
-                            "url": "https://pbs.twimg.com/profile_images/3647943215/d7f12830b3c17a5a9e4afcc370e3a37e_400x400.jpeg",
-                            "size": "small",
-                            "style": "person"
-                        }
-                    ]
-				},{
-                    "type": "CarouselItem",
-                    "width": "stretch",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "Matt Hidinger",
-                            "weight": "bolder",
-                            "wrap": true
-                        },
-                        {
-                            "type": "TextBlock",
-                            "spacing": "none",
-                            "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
-                            "isSubtle": true,
-                            "wrap": true
-                        }
-                    ]
-                },{
-                    "type": "CarouselItem",
-                    "width": "auto",
-                    "items": [
-                        {
-                            "type": "Image",
-                            "url": "https://pbs.twimg.com/profile_images/3647943215/d7f12830b3c17a5a9e4afcc370e3a37e_400x400.jpeg",
-                            "size": "small",
-                            "style": "person"
-                        }
-                    ]
-				},
-                
-                {
-                    "type": "CarouselItem",
-                    "width": "stretch",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "Matt Hidinger",
-                            "weight": "bolder",
-                            "wrap": true
-                        },
-                        {
-                            "type": "TextBlock",
-                            "spacing": "none",
-                            "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
-                            "isSubtle": true,
-                            "wrap": true
-                        }
-                    ]
-                },
-                {
-                    "type": "CarouselItem",
-                    "width": "stretch",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "Matt Hidinger",
-                            "weight": "bolder",
-                            "wrap": true
-                        },
-                        {
-                            "type": "TextBlock",
-                            "spacing": "none",
-                            "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
-                            "isSubtle": true,
-                            "wrap": true
-                        }
-                    ]
-                },
-                {
-                    "type": "CarouselItem",
-                    "width": "stretch",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "Matt Hidinger",
-                            "weight": "bolder",
-                            "wrap": true
-                        },
-                        {
-                            "type": "TextBlock",
-                            "spacing": "none",
-                            "text": "Created {{DATE(2017-02-14T06:08:39Z, SHORT)}}",
-                            "isSubtle": true,
-                            "wrap": true
-                        }
-                    ]
-                }
-            ]
-        },
-				{
-						"type": "Image",
-						"url": "https://genietalkcards.io/content/genietalk-card-50.png"
-					},
-					{
-						"type": "TextBlock",
-						"text": "Hello **Genietalk Cards!**"
-					}
-					
-				],
-				"actions": [{
-						"type": "Action.OpenUrl",
-						"title": "Learn more",
-						"url": "https://genietalkcards.io"
-					},
-					{
-						"type": "Action.OpenUrl",
-						"title": "GitHub",
-						"url": "https://github.com/Microsoft/GenietalkCards"
-					}
-					,
-					{
-						"type": "Action.SubmitQuery",
-						"title": "SubmitQuery",
-						"query": "hello"
-					}
-				]
-			};
+                  ]
+            }
+      ]
+};
 
 			// Create an GenietalkCard instance
 			var genietalkCard = new GenietalkCards.GenietalkCard();
